@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <title>JN Designs Portfolio Site</title>
+</head>
+
+<body class="site">
+    <h1 class="hidden">JN Design Portfolio Site</h1>
+    
+    <div id="sticky-nav-con">
+    <header class="head grid-con">
+        <div class="logo col-span-full m-col-start-1 m-col-end-4" id="logo">
+            <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        </div>
+        
+        <nav id="main-nav" class="col-span-full m-col-start-4 m-col-end-11 nav-right">
+            <h2 class="hidden">Main Navigation</h2>
+            
+            <!-- Hamburger button -->
+             <button class="burger-btn" aria-label="Toggle navigation" aria-controls="burger-con" aria-expanded="false">
+                <i class="fa fa-bars"></i>
+            </button>
+            
+            <!-- Nav Bar -->
+             <div id="burger-con" class="menu-panel">
+                <ul class="menu-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Skills</a></li>
+                    <li><a href="#">Work</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</div>
+
+<main class="main">
+  <!-- HERO -->
+   <section id="home" class="hero one-item sm-one-item md-one-item lg-one-item">
+    <div class="hero-inner">
+        <div class="hi">Hi!</div>
+        <div class="iam">
+            <p class="iam-top">I’m</p>
+            <h2 class="name">JUSTINE<br>NATHALIE</h2>
+        </div>
+        
+        <p class="tagline">
+            I create websites and digital products with a splash of design, a sprinkle of code, and a whole lot of creativity.
+        </p>
+        
+        <!-- Slider Bears -->
+         <ul class="slider-bears" role="tablist" aria-label="Section bears">
+            <li><button class="bear active" aria-label="Slide 1"><img src="images/B_icon_gray.png" alt="Bear icon 1"></button></li>
+            <li><button class="bear" aria-label="Slide 2"><img src="images/B_icon_Peach.png" alt="Bear icon 2"></button></li>
+            <li><button class="bear" aria-label="Slide 3"><img src="images/B_icon_Peach.png" alt="Bear icon 3"></button></li>
+            <li><button class="bear" aria-label="Slide 4"><img src="images/B_icon_Peach.png" alt="Bear icon 4"></button></li>
+            <li><button class="bear" aria-label="Slide 5"><img src="images/B_icon_Peach.png" alt="Bear icon 5"></button></li>
+        </ul>
+    </div>
+</section>
+</main>
+    
+    <!-- FOOTER -->
+     <footer class="foot" id="site-footer">
+        <div class="footer-inner">
+            <button id="info-toggle" class="info-btn" aria-expanded="false" aria-controls="social-bar" aria-label="More information">
+                <i class="fa fa-exclamation-circle"></i>
+            </button>
+                <p class="credit">Created by J. Nathalie ©2025</p>
+            </div>
+            
+            <!-- Hidden Social Media Tab-->
+                <div id="social-bar" class="social-row" hidden>
+                    <ul class="social-list" aria-label="Social Links">
+                        <li><a href="#" aria-label="LinkedIn"><img src="images/Linkedin.png" alt="LinkedIn"></a></li>
+                        <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt="Facebook"></a></li>
+                        <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt="Instagram"></a></li>
+                        <li><a href="#" aria-label="TwitterX"><img src="images/TwitterX.png" alt="TwitterX"></a></li>
+                        <li><a href="#" aria-label="Youtube"><img src="images/Youtube.png" alt="YouTube"></a></li>
+                        <li><a href="mailto:ngjnathalie.ca@gmail.com" aria-label="Email"><img src="images/Email.png" alt="Email"></a></li>
+                    </ul>
+                    <button id="close-toggle" class="close-btn" aria-label="Hide social links">
+                        <i class="fa fa-chevron-up"></i>
+                    </button>
+                </div>
+            </footer>
+        <script src="js/main.js"></script>
+    </body>
+</html>
