@@ -1,42 +1,55 @@
-# Portfolio Website Project (Homepage, Work, About, Contact)
+The Portfolio of Justine Nathalie Ng - Interactive Media Designer
 
-This is my repo for my Portfolio Website, showcasing my works and different projects in a fun, interactive way.  
-The site is built with semantic HTML5, responsive SASS/CSS styling, and JavaScript for animations and interactive features.  
+![my portfoilio](images/Portfolio_Mockup.png)
 
-** Pages ** 
-Homepage : Hero section with intro animation and smooth navigation.  
-About Page : A short introduction about myself and my interests, with a drag-and-drop interactive feature.   
-Skills Page: A fun drag-and-drop section to showcase my skills in an interactive way.  
-Work Page : A showcase of my featured projects in a grid-based layout. 
-Contact Page: Contact form and details to reach me.  
+Welcome to my personal portfolio repository! This portfolio showcases my creative journey, skills, and projects as an Interactive Media Design student. Here, you’ll find a collection of works that reflect my strengths in design, motion, and product development — blending creativity with interactivity to create meaningful digital experiences.
 
-## Features 
-Responsive Layout : Optimized CSS Grid design that scales across mobile, tablet, and desktop.  
-SASS Styling : Organized with variables, nesting, and partials for cleaner code.  
-Hero Animation : Animated text and elements on page load for visual impact.  
-Scroll Effects : Sections fade in and stagger while scrolling.  
-Interactive Navigation : Mobile menu opens and closes with animation.  
-Drag-and-Drop (About Page) : Interactive feature to explore information in a fun way.  
-Drag-and-Drop (Skills Page) : Engaging activity to showcase skills interactively.  
+Table of Contents<br/>
+About<br/>
+Skills<br/>
+Features<br/>
+Installation<br/>
+Contact<br/>
 
-## Installation
-No installation required. Download the ZIP file and extract its contents. 
+About <a id="about"></a>
 
-## Usage
-Open index.html in any modern browser.  
-- Scroll through the homepage to see animations and effects.  
-- Visit the pages using the menu.  
-- Try out the drag-and-drop feature for a fun interactive experience. 
+This portfolio was created to demonstrate my growth in both creative and technical fields. From designing interactive websites to developing new product ideas, I explore different ways to bring stories and experiences to life. Each project shows how I approach challenges with a balance of creativity, design thinking, and problem-solving.
 
-## Contributing
-Fork it!
-Create your feature branch: git checkout -b my-new-feature
-Commit your changes: git commit -am 'Add some feature'
-Push to the branch: git push origin my-new-feature
-Submit a pull request 
+Skills <a id="skills"></a>
+Here’s a quick overview of the skills highlighted in this portfolio:
+Creative & Design
+Motion Design & Animation
+Graphic & Web Design
+Product & Brand Development
+Technical
 
-## Credits
-Ng_JustineNathalie  
+### Languages:  <a id="languages"></a>
+JavaScript, HTML5, CSS3
 
-## License
-This project is licensed under the [MIT License](LICENSE)
+### Frameworks and Libraries: 
+GreenSock
+
+### Tools: 
+Git & Github, Figma, Adobe Suite
+
+### Technologies: 
+
+Features <a id="features"></a>
+Responsive Layout across mobile, tablet, and desktop
+Organized SASS styling with variables and partials
+Smooth hero animations and scroll-triggered effects
+Interactive navigation with burger menu toggle
+Fun drag-and-drop features on About and Skills pages
+
+Installation <a id="installation"></a>
+To run the portfolio locally:
+Clone this repository
+Navigate into the project folder
+Open the index.html file in your browser, or launch via a local server
+
+Contact<a id="contact"></a>
+I’d love to connect! Whether you’d like to collaborate, ask a question, or just say hello, feel free to reach out:
+
+LinkedIn: [Justine Nathalie Ng](www.linkedin.com/in/jnathalieng)
+
+Thank you for visiting my portfolio! 🌟
