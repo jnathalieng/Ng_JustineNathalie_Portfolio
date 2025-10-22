@@ -1,0 +1,340 @@
+/*
+Style Name: Site Build 
+Description: Portfolio Site
+Author: Justine Nathalie Ng
+Version: 1.0
+Tags: Let's Build Something!
+*/
+
+/* ___________________________________________
+
+       CSS Guide
+___________________________________________ */
+
+/* 01. Main
+   02. Nav Bar
+   03. Hero
+   04. Slider Bears
+   05. Footer
+
+/* _____________________________________
+
+   01- Main 
+   _____________________________________ */
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  color: #646469;
+  background: #fff;
+}
+
+h1, h2, h3, h4, p { margin: 0; padding: 0; }
+a { color: #000; text-decoration: none; }
+a:hover, a:focus { text-decoration: underline; }
+img { display: block; width: 100%; height: auto; }
+.hidden { display: none; }
+
+#sticky-nav-con {
+  background: #fff;
+  border-bottom: 1px solid #d8dde1;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+#logo img {
+  height: 60px;
+  width: auto;
+}
+
+/* _____________________________________
+
+   02- Nav Bar
+   _____________________________________ */
+
+#main-nav { position: relative; }
+
+.menu-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu-list li a {
+  color: #666a6c;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.menu-list li a:hover { color: #000; }
+
+.burger-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 40px;
+  width: 40px;
+  border: 0;
+  background: transparent;
+  color: #666a6c;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Mobile and Table */ 
+
+@media screen and (max-width: 1023px) {
+  .menu-list { 
+    display: none; 
+  }
+
+  #burger-con { 
+    display: none; 
+    position: absolute; 
+    right: 0; 
+    top: 48px; 
+    background: #ffffff; 
+    border: 1px solid #d8dde1; 
+    padding: 12px 16px; 
+  }
+  
+  #burger-con.open { 
+    display: block; 
+  }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1024px) {
+  .burger-btn { display: none; }
+  .menu-list { display: flex; }
+}
+
+/* _____________________________________
+
+   03- Hero
+   _____________________________________ */
+
+.hero {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero .hero-inner {
+  max-width: 900px;       
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+  text-align: center;
+}
+
+.hi {
+  font-size: 140px;
+  font-weight: 800;
+  color: #fec5e5;
+  letter-spacing: 4px;
+  line-height: 120px;
+}
+
+.iam-top {
+  font-size: 24px;
+  margin-bottom: 6px;
+  letter-spacing: 2px;
+}
+
+.name {
+  font-size: 56px;
+  font-weight: 700;
+  color: #666a6c;
+  letter-spacing: 3px;
+  line-height: 56px;
+}
+
+.tagline {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #6f6f6f;
+  line-height: 26px;
+}
+
+
+@media screen and (min-width: 1024px) {
+
+  .hero .hero-inner {
+    grid-template-columns: auto auto;
+    align-items: end;
+    justify-content: center;
+    column-gap: 24px;
+  }
+
+  .tagline { 
+    grid-column: 1 / -1; }
+}
+
+/* _____________________________________
+
+   04. Slider Bears
+   _____________________________________ */
+
+
+.slider-bears { 
+  list-style: none; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 50px; 
+  margin-top: 40px; 
+  padding: 0; 
+}
+
+.slider-bears li { 
+  list-style: none; 
+}
+
+.slider-bears button,
+.slider-bears .bear {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slider-bears .bear img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  opacity: 0.45;
+}
+
+.slider-bears .bear.active img { 
+  opacity: 1; 
+}
+
+/* Mobile and Tablet */ 
+@media screen and (max-width: 1023px) {
+
+  .slider-bears { 
+    gap: 30px; 
+    margin-top: 28px; 
+  }
+
+  .slider-bears .bear img { 
+    width: 28px; 
+    height: 28px; 
+  }
+
+}
+
+/* Desktop */ 
+@media screen and (min-width: 1024px) {
+
+  .hero { 
+    display: flex; 
+    justify-content: center; 
+  }
+
+  .hero .hero-inner {
+    max-width: 900px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: end;
+    justify-content: center;
+    column-gap: 24px;
+    row-gap: 20px;
+    text-align: center;
+  }
+
+  .hero .tagline,
+  .slider-bears { 
+    grid-column: 1 / -1; 
+  }
+}
+
+/* _____________________________________
+
+   05. Footer
+   _____________________________________ */
+
+.foot {
+  border-top: 1px solid #d8dde1;
+  padding: 16px;
+  background: #fff;
+  color: #6f6f6f;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.credit {
+  font-size: 14px;
+  color: #6f6f6f;
+  order: 1;
+}
+
+.info-btn {
+  background: transparent;
+  border: 0;
+  font-size: 18px;
+  color: #666a6c;
+  cursor: pointer;
+  order: 2;
+}
+
+#social-bar {
+  border-top: 1px solid #d8dde1;
+  margin-top: 10px;
+  padding-top: 10px;
+  display: none;
+}
+
+#social-bar.show {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+#social-bar a {
+  font-size: 22px;
+  color: #666a6c;
+}
+
+#social-bar a:hover { 
+    color: #e2231a; 
+}
+
+
+
