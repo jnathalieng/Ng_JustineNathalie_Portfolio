@@ -348,7 +348,6 @@ img {
 /* _____________________________________
 
    05. Video Player
-<<<<<<< Updated upstream
    _____________________________________  */ 
 
 #player-container { 
@@ -422,88 +421,12 @@ img {
 }
 
 
-=======
-   _____________________________________ */
-
-#player-container { 
-  max-width: 1000px; 
-  margin: 40px auto; 
-}
-
-#player-container video {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #000;
-  border: 2px solid #cdb4db; 
-  border-radius: 12px 12px 0 0;
-  overflow: hidden;
-}
-
-#video-controls {
-  display: grid;
-  grid-template-columns: auto auto auto 1fr auto auto;
-  gap: 8px;
-  align-items: center;
-  padding: 12px;
-  background: #ffffff; 
-  border: 2px solid #cdb4db; 
-  border-top: none;
-  font-family: 'Comfortaa', sans-serif;
-}
-
-#video-controls button {
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 16px;
-  color: #000; 
-  background-color: #a2d2ff; 
-}
-
-#video-controls button:hover {
-  background-color: #b5ead7;
-}
-
-#video-controls button:active {
-  background-color: #ffb4a2; 
-}
-
-#change-vol {
-  width: 100%;
-  accent-color: #fec5e5; 
-}
-
-/* _____________________________________
-
-   06. Footer
-   _____________________________________ */
-
-.foot { 
-  padding: 16px 8px; 
-}
-
-.footer-bar {
-  display: grid;
-  align-items: center;
-  grid-column-gap: 8px;
-}
-
-.credit { 
-  margin: 0; 
-  font-size: 14px; 
-}
-
-
->>>>>>> Stashed changes
 .footer-right {
   display: flex;
   align-items: center;
   gap: 8px;
   justify-content: flex-end;
 }
-
 #social-bar[hidden] { 
   display: none; 
 }
