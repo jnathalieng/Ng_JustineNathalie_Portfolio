@@ -13,7 +13,7 @@
     <title>JN Designs Portfolio Site</title>
 </head>
 
-body class="site">
+<body class="site">
     <h1 class="hidden">JN Design Portfolio Site</h1>
     
     <div id="sticky-nav-con">
@@ -60,41 +60,88 @@ body class="site">
         </p>
         
         <!-- Slider Bears -->
-         <ul class="slider-bears" role="tablist" aria-label="Section bears">
-            <li><button class="bear active" aria-label="Slide 1"><img src="images/B_icon_gray.png" alt="Bear icon 1"></button></li>
-            <li><button class="bear" aria-label="Slide 2"><img src="images/B_icon_Peach.png" alt="Bear icon 2"></button></li>
-            <li><button class="bear" aria-label="Slide 3"><img src="images/B_icon_Peach.png" alt="Bear icon 3"></button></li>
-            <li><button class="bear" aria-label="Slide 4"><img src="images/B_icon_Peach.png" alt="Bear icon 4"></button></li>
-            <li><button class="bear" aria-label="Slide 5"><img src="images/B_icon_Peach.png" alt="Bear icon 5"></button></li>
+         <ul class="slider-bears">
+            <li>
+                <button class="bear active">
+                    <img src="images/B_icon_gray.png" alt="Bear icon 1">
+                </button>
+            </li>
+            
+            <li>
+                <button class="bear">
+                    <img src="images/B_icon_Peach.png" alt="Bear icon 2">
+                </button>
+            </li>
+            
+            <li>
+                <button class="bear">
+                    <img src="images/B_icon_Peach.png" alt="Bear icon 3">
+                </button>
+            </li>
+            
+            <li>
+                <button class="bear">
+                    <img src="images/B_icon_Peach.png" alt="Bear icon 4">
+                </button>
+            </li>
+            
+            <li>
+                <button class="bear">
+                    <img src="images/B_icon_Peach.png" alt="Bear icon 5">
+                </button>
+            </li>
         </ul>
     </div>
 </section>
 </main>
+
+<!-- Video Player -->
+ 
+<section class="one-item sm-one-item md-one-item lg-one-item">
+    <h2 class="hidden">Video Player</h2>
+  <div id="player-container">
+    <video preload="metadata" poster="images/placeholder.jpg">
+      <source src="#" type="video/mp4">
+      <source src="#" type="video/webm">
+      <p>You are using an older browser that does not support HTML5 Video.</p>
+    </video>
+
+    <div class="video-controls hidden" id="video-controls">
+      <button id="play-button"><i class="fa fa-play-circle-o"></i></button>
+      <button id="pause-button"><i class="fa fa-pause-circle-o"></i></button>
+      <button id="stop-button"><i class="fa fa-stop-circle-o"></i></button>
+      <i class="fa fa-volume-up"></i>
+      <input type="range" id="change-vol" step="0.05" min="0" max="1" value="1">
+      <button id="full-screen"><i class="fa fa-arrows-alt"></i></button>
+    </div>
+  </div>
+</section>
     
     <!-- FOOTER -->
-     <footer class="foot" id="site-footer">
-        <div class="footer-inner">
-            <button id="info-toggle" class="info-btn" aria-expanded="false" aria-controls="social-bar" aria-label="More information">
-                <i class="fa fa-exclamation-circle"></i>
+     <footer class="foot">
+    <div class="footer-bar one-item sm-half-left md-half-left lg-half-left">
+        <p class="credit">Created by Justine Nathalie Ng</p>
+        
+        <div class="footer-right">
+            <button id="info-toggle" class="info-btn">
+                <i class="fa fa-info-circle"></i>
             </button>
-                <p class="credit">Created by J. Nathalie ©2025</p>
-            </div>
             
-            <!-- Hidden Social Media Tab-->
-                <div id="social-bar" class="social-row" hidden>
-                    <ul class="social-list" aria-label="Social Links">
-                        <li><a href="#" aria-label="LinkedIn"><img src="images/Linkedin.png" alt="LinkedIn"></a></li>
-                        <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt="Facebook"></a></li>
-                        <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt="Instagram"></a></li>
-                        <li><a href="#" aria-label="TwitterX"><img src="images/TwitterX.png" alt="TwitterX"></a></li>
-                        <li><a href="#" aria-label="Youtube"><img src="images/Youtube.png" alt="YouTube"></a></li>
-                        <li><a href="mailto:ngjnathalie.ca@gmail.com" aria-label="Email"><img src="images/Email.png" alt="Email"></a></li>
-                    </ul>
-                    <button id="close-toggle" class="close-btn" aria-label="Hide social links">
-                        <i class="fa fa-chevron-up"></i>
-                    </button>
-                </div>
-            </footer>
+            <div id="social-bar" class="social" hidden>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="mailto:hello@example.com"><img src="images/email.png" alt="Email"></a>
+                
+                <button id="close-toggle" class="close-btn">
+                    <i class="fa fa-chevron-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>
         <script src="js/main.js"></script>
     </body>
 </html>
