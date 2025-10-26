@@ -13,7 +13,7 @@
     <title>JN Designs Portfolio Site</title>
 </head>
 
-body class="site">
+<body class="site">
     <h1 class="hidden">JN Design Portfolio Site</h1>
     
     <div id="sticky-nav-con">
@@ -70,6 +70,25 @@ body class="site">
     </div>
 </section>
 </main>
+
+<section class="one-item sm-one-item md-one-item lg-one-item">
+  <div id="player-container">
+    <video preload="metadata" poster="images/placeholder.jpg">
+      <source src="#" type="video/mp4">
+      <source src="#" type="video/webm">
+      <p>You are using an older browser that does not support HTML5 Video.</p>
+    </video>
+
+    <div class="video-controls hidden" id="video-controls">
+      <button id="play-button"><i class="fa fa-play-circle-o"></i></button>
+      <button id="pause-button"><i class="fa fa-pause-circle-o"></i></button>
+      <button id="stop-button"><i class="fa fa-stop-circle-o"></i></button>
+      <i class="fa fa-volume-up"></i>
+      <input type="range" id="change-vol" step="0.05" min="0" max="1" value="1">
+      <button id="full-screen"><i class="fa fa-arrows-alt"></i></button>
+    </div>
+  </div>
+</section>
     
     <!-- FOOTER -->
      <footer class="foot" id="site-footer">

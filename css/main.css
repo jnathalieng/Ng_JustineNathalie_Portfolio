@@ -15,7 +15,8 @@ ___________________________________________ */
    02. Nav Bar
    03. Hero
    04. Slider Bears
-   05. Footer
+   05. Video Player
+   06. Footer
 
 /* _____________________________________
 
@@ -342,60 +343,118 @@ img {
 
 /* _____________________________________
 
-   05. Footer
+   05. Video
    _____________________________________ */
 
-.foot {
-  border-top: 1px solid #d8dde1;
-  padding: 16px;
-  background: #fff;
-  color: #6f6f6f;
+#player-container { 
+  max-width: 1000px; 
+  margin: 40px auto; 
 }
 
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
+#player-container video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+  border: 2px solid #cdb4db; 
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+
+#video-controls {
+  display: grid;
+  grid-template-columns: auto auto auto 1fr auto auto;
+  gap: 8px;
   align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 12px;
+  background: #ffffff; 
+  border: 2px solid #cdb4db; 
+  border-top: none;
+  font-family: 'Comfortaa', sans-serif;
 }
 
-.credit {
-  font-size: 14px;
-  color: #6f6f6f;
-  order: 1;
-}
-
-.info-btn {
-  background: transparent;
-  border: 0;
-  font-size: 18px;
-  color: #666a6c;
+#video-controls button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
   cursor: pointer;
-  order: 2;
+  font-size: 16px;
+  color: #000; 
+  background-color: #a2d2ff; 
 }
 
-#social-bar {
-  border-top: 1px solid #d8dde1;
-  margin-top: 10px;
-  padding-top: 10px;
-  display: none;
+#video-controls button:hover {
+  background-color: #b5ead7;
 }
 
-#social-bar.show {
+#video-controls button:active {
+  background-color: #ffb4a2; 
+}
+
+#change-vol {
+  width: 100%;
+  accent-color: #fec5e5; 
+}
+
+/* _____________________________________
+
+   06. Footer
+   _____________________________________ */
+
+.foot { 
+  padding: 16px 8px; 
+}
+
+.footer-bar {
+  display: grid;
+  align-items: center;
+  grid-column-gap: 8px;
+}
+
+.credit { 
+  margin: 0; 
+  font-size: 14px; 
+}
+
+
+.footer-right {
   display: flex;
+  align-items: center;
+  gap: 8px;
   justify-content: flex-end;
-  gap: 16px;
 }
 
-#social-bar a {
-  font-size: 22px;
-  color: #666a6c;
+#social-bar[hidden] { 
+  display: none; 
 }
 
-#social-bar a:hover { 
-    color: #e2231a; 
+#social-bar.show { 
+  display: flex; 
 }
 
+.social {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
+.info-btn, .close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.social img {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
 
