@@ -39,11 +39,29 @@ body {
   background: #fff;
 }
 
-h1, h2, h3, h4, p { margin: 0; padding: 0; }
-a { color: #000; text-decoration: none; }
-a:hover, a:focus { text-decoration: underline; }
-img { display: block; width: 100%; height: auto; }
-.hidden { display: none; }
+h1, h2, h3, h4, p { 
+  margin: 0; 
+  padding: 0; 
+}
+
+a { 
+  color: #000; 
+  text-decoration: none; 
+}
+
+a:hover, a:focus {
+   text-decoration: underline; 
+  }
+
+img { 
+  display: block; 
+  width: 100%; 
+  height: auto; 
+}
+
+.hidden { 
+  display: none; 
+}
 
 #sticky-nav-con {
   background: #fff;
@@ -56,15 +74,21 @@ img { display: block; width: 100%; height: auto; }
 }
 
 .head {
-  display: flex;
-  justify-content: space-between;
+  display: flex;              
+  justify-content: space-between; 
   align-items: center;
   padding: 16px;
 }
 
-#logo img {
-  height: 60px;
+.logo { 
+  display: flex; 
+  align-items: center; 
+}
+
+.logo img {
   width: auto;
+  height: auto;
+  max-height: 48px;
 }
 
 /* _____________________________________
@@ -72,63 +96,100 @@ img { display: block; width: 100%; height: auto; }
    02- Nav Bar
    _____________________________________ */
 
-#main-nav { position: relative; }
+#main-nav { 
+  position: relative; 
+  display: flex; 
+  align-items: center;
+  gap: 16px;
+}
 
 .menu-list {
   list-style: none;
-  display: flex;
+  margin: 0;
+  padding: 0;
+  display: flex;     
   gap: 20px;
 }
 
-.menu-list li a {
-  color: #666a6c;
-  font-weight: 500;
-  font-size: 18px;
+.menu-list a {
+  text-decoration: none;
+  color: #222;
 }
 
-.menu-list li a:hover { color: #000; }
+.menu-list a:hover,
+.menu-list a:focus {
+  text-decoration: underline;
+}
 
 .burger-btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
   height: 40px;
   width: 40px;
   border: 0;
   background: transparent;
-  color: #666a6c;
+  color: #373838;
   font-size: 22px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Mobile and Table */ 
+#burger-con { 
+  display: none; 
+}
 
+#burger-con.open { 
+  display: block; 
+}
+
+/* Mobile / Tablet */ 
 @media screen and (max-width: 1023px) {
   .menu-list { 
     display: none; 
   }
 
-  #burger-con { 
-    display: none; 
-    position: absolute; 
-    right: 0; 
-    top: 48px; 
-    background: #ffffff; 
-    border: 1px solid #d8dde1; 
-    padding: 12px 16px; 
+  #burger-con {
+    display: none;
+    position: absolute;
+    right: 16px;         
+    top: 64px;            
+    background: #fff;
+    border: 1px solid #d8dde1;
+    padding: 12px 16px;
+    z-index: 1100;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   }
-  
+
   #burger-con.open { 
     display: block; 
   }
+
+  #burger-con .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
-/* Desktop */
+/* Desktop */ 
 
 @media screen and (min-width: 1024px) {
-  .burger-btn { display: none; }
-  .menu-list { display: flex; }
+  .burger-btn { 
+    display: none; 
+  }
+
+  #burger-con {
+    display: block;      
+    position: static;
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .menu-list {
+    display: flex;      
+    gap: 20px;
+  }
 }
 
 /* _____________________________________
