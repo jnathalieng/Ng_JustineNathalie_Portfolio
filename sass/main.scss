@@ -7,3 +7,23 @@
 @use 'base'; /** it goes to the base, so it can see the files **/
 @use 'components';
 @use 'pages';
+
+* {
+  box-sizing: border-box;
+}
+
+/* visually hidden text (for .hidden and screen-reader-text) */
+.hidden,
+.screen-reader-text {
+  position: absolute;
+  left: -9999px;
+}
+
+/* skip link */
+.skip-link.screen-reader-text:focus {
+  position: static;
+  left: auto;
+  padding: 8px 12px;
+  background-color: #333;
+  color: #fff;
+}
