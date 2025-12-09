@@ -346,6 +346,8 @@ img {
 
    05. Video Player
    _____________________________________  */ 
+   05. Video
+   _____________________________________ */
 
 #player-container { 
   max-width: 1000px; 
@@ -412,6 +414,14 @@ img {
   grid-column-gap: 8px;
 }
 
+}
+
+.footer-bar {
+  display: grid;
+  align-items: center;
+  grid-column-gap: 8px;
+}
+
 .credit { 
   margin: 0; 
   font-size: 14px; 
@@ -424,6 +434,12 @@ img {
   gap: 8px;
   justify-content: flex-end;
 }
+#social-bar[hidden] { 
+  display: none; 
+}
+
+}
+
 #social-bar[hidden] { 
   display: none; 
 }
@@ -460,4 +476,9 @@ img {
 
 
 
+.social img {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
 

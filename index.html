@@ -19,6 +19,36 @@
       <div class="logo">
         <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
       </div>
+    <h1 class="hidden">JN Design Portfolio Site</h1>
+    
+    <div id="sticky-nav-con">
+        <header class="head grid-con">
+            <div class="logo hero one-item sm-one-item md-one-item lg-one-item" id="logo">
+                <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+            </div>
+            
+            <nav id="main-nav" class="hero one-item sm-one-item md-one-item lg-one-item nav-right">
+                <h2 class="hidden">Main Navigation</h2>
+                
+                <!-- Hamburger button -->
+                <button class="burger-btn">
+                    <i class="fa fa-bars"></i>
+                </button>
+                
+                <!-- Nav Bar -->
+                <div id="burger-con" class="menu-panel">
+                    <ul class="menu-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Skills</a></li>
+                        <li><a href="#">Work</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+</body>
 
       <nav id="main-nav">
         <button class="burger-btn" id="burger-button"><i class="fa fa-bars"></i></button>
@@ -152,4 +182,53 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="js/main.js"></script>
 </body>
+</html>
+</section>
+</main>
+
+<section class="one-item sm-one-item md-one-item lg-one-item">
+  <div id="player-container">
+    <video preload="metadata" poster="images/placeholder.jpg">
+      <source src="#" type="video/mp4">
+      <source src="#" type="video/webm">
+      <p>You are using an older browser that does not support HTML5 Video.</p>
+    </video>
+
+    <div class="video-controls hidden" id="video-controls">
+      <button id="play-button"><i class="fa fa-play-circle-o"></i></button>
+      <button id="pause-button"><i class="fa fa-pause-circle-o"></i></button>
+      <button id="stop-button"><i class="fa fa-stop-circle-o"></i></button>
+      <i class="fa fa-volume-up"></i>
+      <input type="range" id="change-vol" step="0.05" min="0" max="1" value="1">
+      <button id="full-screen"><i class="fa fa-arrows-alt"></i></button>
+    </div>
+  </div>
+</section>
+    
+    <!-- FOOTER -->
+     <footer class="foot" id="site-footer">
+        <div class="footer-inner">
+            <button id="info-toggle" class="info-btn" aria-expanded="false" aria-controls="social-bar" aria-label="More information">
+                <i class="fa fa-exclamation-circle"></i>
+            </button>
+                <p class="credit">Created by J. Nathalie ©2025</p>
+            </div>
+            
+            <!-- Hidden Social Media Tab-->
+                <div id="social-bar" class="social-row" hidden>
+                    <ul class="social-list" aria-label="Social Links">
+                        <li><a href="#" aria-label="LinkedIn"><img src="images/Linkedin.png" alt="LinkedIn"></a></li>
+                        <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt="Facebook"></a></li>
+                        <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt="Instagram"></a></li>
+                        <li><a href="#" aria-label="TwitterX"><img src="images/TwitterX.png" alt="TwitterX"></a></li>
+                        <li><a href="#" aria-label="Youtube"><img src="images/Youtube.png" alt="YouTube"></a></li>
+                        <li><a href="mailto:ngjnathalie.ca@gmail.com" aria-label="Email"><img src="images/Email.png" alt="Email"></a></li>
+                    </ul>
+                    <button id="close-toggle" class="close-btn" aria-label="Hide social links">
+                        <i class="fa fa-chevron-up"></i>
+                    </button>
+                </div>
+            </footer>
+        <script src="js/main.js"></script>
+    </body>
 </html>
