@@ -1,0 +1,213 @@
+.contact-wrapper {
+  width: 100%;
+}
+
+.contact-card-outer {
+  background-color: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 30px;
+  box-shadow: 0px 10px 24px rgba(0,0,0,0.08);
+}
+
+.contact-card-inner {
+  position: relative;
+  margin: 40px;
+  padding: 60px 70px 60px;
+  border-radius: 26px;
+  border: 1px solid #f2e5de;
+  background-color: #fffaf7;
+}
+
+.contact-inner-outline {
+  position: absolute;
+  top: 34px;
+  left: 34px;
+  right: 34px;
+  bottom: 34px;
+  border: 1px solid #dedede;
+  border-radius: 22px;
+}
+
+.contact-grid {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-left {
+  padding-right: 40px;
+}
+
+.contact-heading {
+  font-family: 'Comfortaa';
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 44px;
+  margin-bottom: 30px;
+  color: #aac7ff;
+}
+
+.contact-copy {
+  font-family: 'Montserrat';
+  font-size: 18px;
+  line-height: 30px;
+  color: #f3a792;
+  margin-bottom: 24px;
+}
+
+.contact-divider {
+  width: 1px;
+  background-color: #aac7ff;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.contact-right {
+  padding-left: 40px;
+}
+
+.contact-field-group {
+  margin-bottom: 26px;
+}
+
+.contact-label {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #aac7ff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.contact-label span {
+  color: #f3a792;
+}
+
+.contact-message-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-char-note {
+  font-family: 'Montserrat';
+  font-size: 13px;
+  color: #999999;
+}
+
+.contact-input {
+  width: 100%;
+  height: 64px;
+  border-radius: 999px;
+  background-color: #fde4d9;
+  border: none;
+  padding: 20px 26px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  color: #333333;
+}
+
+.contact-textarea {
+  width: 100%;
+  min-height: 240px;
+  background-color: #fde4d9;
+  border-radius: 20px;
+  border: none;
+  padding: 20px 26px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  color: #333333;
+  resize: vertical;
+}
+
+.contact-required-note {
+  font-family: 'Montserrat';
+  font-size: 13px;
+  color: #999999;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 26px;
+}
+
+.contact-submit {
+  background-color: #aac7ff;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 16px 70px;
+  border: none;
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.contact-submit:hover {
+  filter: brightness(1.06);
+}
+
+@media (max-width: 899px) {
+  .contact-card-inner {
+    margin: 24px;
+    padding: 40px 24px 30px;
+  }
+
+  .contact-inner-outline {
+    top: 26px;
+    left: 26px;
+    right: 26px;
+    bottom: 26px;
+  }
+
+  .contact-divider {
+    display: none;
+  }
+
+  .contact-left,
+  .contact-right {
+    padding: 0;
+  }
+
+  .contact-heading {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .contact-actions {
+    justify-content: center;
+  }
+
+  .contact-submit {
+    width: 160px;
+    padding: 14px 0;
+  }
+}
+
+.contact-thankyou {
+  background-color: #ffffff;
+  padding: 24px 28px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 3;
+}
+
+.contact-thankyou-title {
+  font-family: 'Comfortaa';
+  font-size: 28px;
+  color: #aac7ff;
+  margin-bottom: 8px;
+}
+
+.contact-thankyou-text {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  color: #f3a792;
+}
+

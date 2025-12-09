@@ -1,0 +1,62 @@
+@use '../abstracts' as *;
+
+.project-wrapper {
+  padding: 40px 0 70px;
+}
+
+.project-hero {
+  border-radius: 26px;
+  border: 1px solid $light-gray;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.project-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-content {
+  margin-bottom: 40px;
+}
+
+.project-label {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: $peach;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.project-title {
+  font-family: 'Comfortaa';
+  font-size: 40px;
+  color: $sky-blue;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.project-text {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  color: $dark-gray;
+  line-height: 28px;
+  margin-bottom: 40px;
+}
+
+.project-role {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  color: $sky-blue;
+  margin-bottom: 40px;
+}
+
+.project-image-box {
+  width: 100%;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid $light-gray;
+  margin-bottom: 40px;
+}
