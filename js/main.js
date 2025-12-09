@@ -1,3 +1,5 @@
+(() => {
+
 // Burger Menu
 // I’m using this to open and close the mobile menu
 const burgerButton = document.querySelector("#burger-button");
@@ -106,7 +108,7 @@ if (typeof gsap !== "undefined" && hiImg && lilmeAvatar && nameLine && subtitle)
     ease: "power3.out"
   });
 
-  // Only the avatar pops up like my Scrolly Me animation
+  // Only the avatar pops up like the Scrolly Me animation
   //Reference: https://codepen.io/cassie-codes/pen/jOwyPrJ
   heroTimeline.from(lilmeAvatar, {
     yPercent: 100,
@@ -149,7 +151,7 @@ if (typeof gsap !== "undefined" && hiImg && lilmeAvatar && nameLine && subtitle)
     delay: 1.6
   });
 
-  // I’m giving the circle a subtle glow so the hero feels more magical
+  // I’m giving the circle a subtle glow so the hero will have a shadow
   if (lilmeCircle) {
     gsap.to(lilmeCircle, {
       scale: 1.03,
@@ -247,7 +249,7 @@ if (orbitSection) {
   const allHotspots = document.querySelectorAll(".hotspot");
 
 
-  // I’m resetting everything so only one state (Core / Work / Love) is active at a time
+  // I’m resetting everything so only one state (Core / Work / Love) is active one at a time
   function hideAllAbout() {
     coreBtn.classList.remove("is-active");
     workBtn.classList.remove("is-active");
@@ -323,7 +325,7 @@ if (orbitSection) {
 
   allHotspots.forEach(setupHotspotClick);
 
-  // I want Core to show first when you land on this page
+  // I want Core Section to show first when you land on this page
   showCore();
 }
 
@@ -364,3 +366,5 @@ if (errorBox && typeof gsap !== "undefined") {
     delay: 0.1
   });
 }
+
+})();
