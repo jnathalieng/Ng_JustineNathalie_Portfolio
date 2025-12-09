@@ -52,4 +52,4 @@ I’d love to connect! Whether you’d like to collaborate, ask a question, or j
 
 LinkedIn: [Justine Nathalie Ng](www.linkedin.com/in/jnathalieng)
 
-Thank you for visiting my portfolio! 🌟
+Thank you for visiting my portfolio! 

@@ -1,0 +1,43 @@
+@use '../abstracts' as *;
+
+#player-container {
+  text-align: center;
+}
+
+#player-container video {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  display: block;
+  margin: 0 auto 16px auto;
+}
+
+.video-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.video-controls.hidden {
+  display: none;
+}
+
+.video-controls button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 4px;
+}
+
+.video-controls i {
+  color: $dark-gray;
+}
+
+#change-vol {
+  width: 140px;
+}
