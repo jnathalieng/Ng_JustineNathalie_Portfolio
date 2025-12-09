@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/main.css">
+  <title>JN Designs Portfolio</title>
+</head>
+
+<body class="site">
+  <h1 class="hidden">JN Designs Portfolio Website</h1>
+
+  <div id="sticky-nav-con">
+    <header class="head">
+      <div class="logo">
+        <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+      </div>
+
+      <nav id="main-nav">
+        <button class="burger-btn" id="burger-button"><i class="fa fa-bars"></i></button>
+
+        <div id="burger-con" class="menu-panel">
+          <ul class="menu-list">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html" class="current">ABOUT ME</a></li>
+            <li><a href="work.html">WORKS</a></li>
+            <li><a href="docs/Resume-JustineNg.pdf" target="_blank">RESUME</a></li>
+            <li><a href="contact.php">CONTACT</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <section class="about-intro grid-con">
+    <div class="about-intro-inner col-span-full m-col-span-full">
+      <h2 class="intro-title">Get to know me!</h2>
+      <p>Tap a bear to explore the different sides of me.</p>
+
+      <div class="intro-choices">
+        <button class="about-btn core-btn is-active">Core</button>
+        <button class="about-btn work-btn">Work</button>
+        <button class="about-btn love-btn">Love</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-hero grid-con">
+    <h1 class="hidden">About J. Nathalie</h1>
+
+    <div class="orbit-con col-span-full m-col-span-full">
+      <svg class="orbit-svg" viewBox="0 0 500 500">
+        <circle cx="250" cy="250" r="180" class="core-ring"></circle>
+        <circle cx="250" cy="250" r="215" class="work-ring"></circle>
+        <circle cx="250" cy="250" r="245" class="love-ring"></circle>
+      </svg>
+
+      <img src="images/Jus_HS_Core.png" class="core-img is-active" alt="Core portrait">
+      <img src="images/Jus_HS_Work.png" class="work-img" alt="Work portrait">
+      <img src="images/Jus_HS_Love.png" class="love-img" alt="Love portrait">
+
+      <div class="core-hotspots is-active">
+        <button class="hotspot core-hotspot1">
+          <img src="images/PBearHead.png" alt="Core hotspot 1">
+          <span class="hotspot-tip">Curious thinker</span>
+        </button>
+
+        <button class="hotspot core-hotspot2">
+          <img src="images/BBearHead.png" alt="Core hotspot 2">
+          <span class="hotspot-tip">Playful visuals</span>
+        </button>
+
+        <button class="hotspot core-hotspot3">
+          <img src="images/PuBearHead.png" alt="Core hotspot 3">
+          <span class="hotspot-tip">Kind & calm</span>
+        </button>
+      </div>
+
+      <div class="work-hotspots">
+        <button class="hotspot work-hotspot1">
+          <img src="images/PBearHead.png" alt="Work hotspot 1">
+          <span class="hotspot-tip">Playful ideas</span>
+        </button>
+
+        <button class="hotspot work-hotspot2">
+          <img src="images/BBearHead.png" alt="Work hotspot 2">
+          <span class="hotspot-tip">Simple systems</span>
+        </button>
+
+        <button class="hotspot work-hotspot3">
+          <img src="images/PuBearHead.png" alt="Work hotspot 3">
+          <span class="hotspot-tip">UI • Motion • 3D</span>
+        </button>
+      </div>
+
+      <div class="love-hotspots">
+        <button class="hotspot love-hotspot1">
+          <img src="images/PBearHead.png" alt="Love hotspot 1">
+          <span class="hotspot-tip">Little adventures</span>
+        </button>
+
+        <button class="hotspot love-hotspot2">
+          <img src="images/BBearHead.png" alt="Love hotspot 2">
+          <span class="hotspot-tip">Cozy time</span>
+        </button>
+
+        <button class="hotspot love-hotspot3">
+          <img src="images/PuBearHead.png" alt="Love hotspot 3">
+          <span class="hotspot-tip">Creative sparks</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="about-info col-span-full m-col-span-full">
+      <div class="info-box core-box is-active">
+        <h3>Core</h3>
+        <p>I’m a curious and imaginative designer who enjoys soft colours, cute visuals, and playful ideas. I like creating designs that feel friendly, simple, and easy to understand.</p>
+      </div>
+
+      <div class="info-box work-box">
+        <h3>Work</h3>
+        <p>I work across design, interactive media, and 3D. I enjoy building clear and simple layouts, adding playful touches, and bringing ideas to life through motion and hands-on making. I like creating work that looks clean, feels easy to use, and has a bit of character.</p>
+      </div>
+
+      <div class="info-box love-box">
+        <h3>Love</h3>
+        <p>I enjoy hobbies that help me relax and stay creative. I like swimming, gaming, crafting, traveling, and spending time outdoors. These activities inspire me and keep my ideas fresh.</p>
+      </div>
+
+      <ul class="about-list core-list is-active">
+        <li>Imaginative</li>
+        <li>Playful</li>
+        <li>Curious</li>
+        <li>Kind</li>
+        <li>Calm</li>
+      </ul>
+
+      <ul class="about-list work-list">
+        <li>Design</li>
+        <li>3D</li>
+        <li>Crafting</li>
+        <li>Visual</li>
+        <li>Planning</li>
+      </ul>
+
+      <ul class="about-list love-list">
+        <li>Swimming</li>
+        <li>Gaming</li>
+        <li>Crafting</li>
+        <li>Outdoors</li>
+        <li>Traveling</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-btn-inner">
+    <a href="index.html" class="section-learn-btn">Back to Home</a>
+  </div>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <p>Created by J. Nathalie ©2024</p>
+
+      <div class="footer-icons">
+        <a href="www.linkedin.com/in/jnathalieng"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
+        <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
+        <a href="www.instagram.com/jnathalieng"><img src="images/Instagram.png" alt="Instagram icon"></a>
+        <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
+        <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

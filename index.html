@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/grid.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <title>JN Designs Portfolio Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>JN Designs Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/grid.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 </head>
 
 <body class="site">
+  <h1 class="hidden">JN Designs Portfolio Website</h1>
+
+  <div id="sticky-nav-con">
+    <header class="head" id="site-header">
+      <div class="logo">
+        <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+      </div>
     <h1 class="hidden">JN Design Portfolio Site</h1>
     
     <div id="sticky-nav-con">
@@ -45,29 +50,139 @@
     </div>
 </body>
 
-<main class="main">
-  <!-- HERO -->
-   <section id="home" class="hero one-item sm-one-item md-one-item lg-one-item">
-    <div class="hero-inner">
-        <div class="hi">Hi!</div>
-        <div class="iam">
-            <p class="iam-top">I’m</p>
-            <h2 class="name">JUSTINE<br>NATHALIE</h2>
+      <nav id="main-nav">
+        <button class="burger-btn" id="burger-button"><i class="fa fa-bars"></i></button>
+
+        <div id="burger-con" class="menu-panel">
+          <ul class="menu-list">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT ME</a></li>
+            <li><a href="work.html">WORKS</a></li>
+            <li><a href="docs/Resume-JustineNg.pdf" target="_blank">RESUME</a></li>
+            <li><a href="contact.php">CONTACT</a></li>
+          </ul>
         </div>
-        
-        <p class="tagline">
-            I create websites and digital products with a splash of design, a sprinkle of code, and a whole lot of creativity.
-        </p>
-        
-        <!-- Slider Bears -->
-         <ul class="slider-bears" role="tablist" aria-label="Section bears">
-            <li><button class="bear active" aria-label="Slide 1"><img src="images/B_icon_gray.png" alt="Bear icon 1"></button></li>
-            <li><button class="bear" aria-label="Slide 2"><img src="images/B_icon_Peach.png" alt="Bear icon 2"></button></li>
-            <li><button class="bear" aria-label="Slide 3"><img src="images/B_icon_Peach.png" alt="Bear icon 3"></button></li>
-            <li><button class="bear" aria-label="Slide 4"><img src="images/B_icon_Peach.png" alt="Bear icon 4"></button></li>
-            <li><button class="bear" aria-label="Slide 5"><img src="images/B_icon_Peach.png" alt="Bear icon 5"></button></li>
-        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <main id="content" class="main">
+
+    <section class="slide hero-section" id="slide1">
+      <div class="hero-inner">
+        <div class="hero-top">
+          <img src="images/Hi_Image.png" alt="Handwritten Hi graphic" class="hi-img">
+
+          <div class="lilme-wrap">
+            <div class="lilme-circle"></div>
+            <img src="images/Jus_Vector_Portfolio.svg" alt="Illustration of Justine Nathalie" class="lilme-avatar">
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <h2 class="name-line">I’M <span>JUSTINE NATHALIE</span></h2>
+          <p class="subtitle">I create websites and digital products with a splash of design, a sprinkle of code, and a whole lot of creativity.</p>
+
+          <div class="section-btn-inner">
+            <a href="about.html" class="section-learn-btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide slider-section video-section" id="slide2">
+      <div class="grid-con">
+        <section id="player-container" class="col-span-full">
+          <video controls preload="metadata" poster="images/Video_Poster.png">
+            <source src="video/Ng_JustineNathalie_DemoReel.mp4" type="video/mp4">
+            <source src="video/Ng_JustineNathalie_DemoReel.webm" type="video/webm">
+            <p>Your browser does not support HTML5 video.</p>
+          </video>
+
+          <div class="video-controls hidden" id="video-controls">
+            <button id="play-button"><i class="fa fa-play-circle-o"></i></button>
+            <button id="pause-button"><i class="fa fa-pause-circle-o"></i></button>
+            <button id="stop-button"><i class="fa fa-stop-circle-o"></i></button>
+            <i class="fa fa-volume-up"></i>
+            <input type="range" id="change-vol" step="0.05" min="0" max="1" value="1">
+            <button id="full-screen"><i class="fa fa-arrows-alt"></i></button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="slide slider-section fw-section" id="slide3">
+      <div class="fw-title-img-wrap">
+        <img src="images/Squeezit_Poster.png" alt="Squeez-It project poster" class="fw-title-img">
+      </div>
+      <h3 class="fw-title">SQUEEZ-IT</h3>
+      <p class="fw-subtitle">Squeezit is a character-driven rebrand of a fruit-flavoured juice drink, created to feel like
+            a tiny playground in a bottle.</p>
+      <div class="section-btn-inner">
+        <a href="squeezit.html" class="section-learn-btn">VIEW PROJECT</a>
+      </div>
+    </section>
+
+    <section class="slide slider-section fw-section" id="slide4">
+      <div class="fw-title-img-wrap">
+        <img src="images/Lumibuds-Poster.png" alt="Lumi Buds poster" class="fw-title-img">
+      </div>
+      <h3 class="fw-title">LUMI BUDS</h3>
+      <p class="fw-subtitle">Lumi Buds is a dreamy wireless earbuds concept that blends gem-like forms, metallic finishes,
+                and soft pastel lighting into a playful audio experience for kids and teens.</p>
+      <div class="section-btn-inner">
+        <a href="lumibuds.html" class="section-learn-btn">VIEW PROJECT</a>
+      </div>
+    </section>
+
+    <section class="slide slider-section fw-section" id="slide5">
+      <div class="fw-title-img-wrap">
+        <img src="images/Seven_Poster.png" alt="SEVEN pet-care branding poster" class="fw-title-img">
+      </div>
+      <h3 class="fw-title">SEVEN</h3>
+      <p class="fw-subtitle">SEVEN is a gentle, nature-inspired pet-care brand built around the idea of “seven days of pet love.”</p>
+      <div class="section-btn-inner">
+        <a href="seven.html" class="section-learn-btn">VIEW PROJECT</a>
+      </div>
+    </section>
+
+    <section class="slide slider-section connect-section" id="slide6">
+      <h3 class="fw-title">LET’S CONNECT</h3>
+      <p class="fw-subtitle">I’d love to collaborate on playful web, motion, and 3D projects.</p>
+      <div class="section-btn-inner">
+        <a href="contact.php" class="section-learn-btn">Contact Me</a>
+      </div>
+    </section>
+
+    <div class="bear-slider">
+      <button id="bear1" class="bear"><img src="images/PBearHead.png" alt="Pink bear icon – slide 1"></button>
+      <button id="bear2" class="bear"><img src="images/BBearHead.png" alt="Blue bear icon – slide 2"></button>
+      <button id="bear3" class="bear"><img src="images/PuBearHead.png" alt="Purple bear icon – slide 3"></button>
+      <button id="bear4" class="bear"><img src="images/PBearHead.png" alt="Pink bear icon – slide 4"></button>
+      <button id="bear5" class="bear"><img src="images/BBearHead.png" alt="Blue bear icon – slide 5"></button>
+      <button id="bear6" class="bear"><img src="images/PuBearHead.png" alt="Purple bear icon – slide 6"></button>
     </div>
+
+  </main>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <p>Created by J. Nathalie ©2024</p>
+
+      <div class="footer-icons">
+        <a href="www.linkedin.com/in/jnathalieng"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
+        <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
+        <a href="www.instagram.com/jnathalieng"><img src="images/Instagram.png" alt="Instagram icon"></a>
+        <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
+        <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
 </section>
 </main>
 
