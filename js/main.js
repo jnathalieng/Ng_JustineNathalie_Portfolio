@@ -1,4 +1,5 @@
 // Burger Menu
+// I’m using this to open and close the mobile menu
 const burgerButton = document.querySelector("#burger-button");
 const burgerCon = document.querySelector("#burger-con");
 
@@ -11,7 +12,8 @@ if (burgerButton && burgerCon) {
 }
 
 // Home Page Sliders
-// I’m handling the slideshow bears here
+// I’m handling the slideshow bears here so each bear shows its own slide
+
 const slide1 = document.querySelector("#slide1");
 const slide2 = document.querySelector("#slide2");
 const slide3 = document.querySelector("#slide3");
@@ -26,57 +28,27 @@ const bear4 = document.querySelector("#bear4");
 const bear5 = document.querySelector("#bear5");
 const bear6 = document.querySelector("#bear6");
 
+// I’m clearing all the slides before I show the one I want
 function hideAllSlides() {
-  if (slide1) {
-     slide1.classList.remove("show"); 
-    }
-
-  if (slide2) {
-     slide2.classList.remove("show"); 
-    }
-
-  if (slide3) { 
-    slide3.classList.remove("show"); 
-  }
-  if (slide4) { 
-    slide4.classList.remove("show"); 
-  }
-
-  if (slide5) {
-     slide5.classList.remove("show"); 
-    }
-
-  if (slide6) {
-     slide6.classList.remove("show"); 
-    }
+  if (slide1) { slide1.classList.remove("show"); }
+  if (slide2) { slide2.classList.remove("show"); }
+  if (slide3) { slide3.classList.remove("show"); }
+  if (slide4) { slide4.classList.remove("show"); }
+  if (slide5) { slide5.classList.remove("show"); }
+  if (slide6) { slide6.classList.remove("show"); }
 }
 
+// I’m resetting all the bears so only one looks active at a time
 function resetBears() {
-  if (bear1) { 
-    bear1.classList.remove("active"); 
-  }
-
-  if (bear2) {
-     bear2.classList.remove("active"); 
-  }
-
-  if (bear3) { 
-    bear3.classList.remove("active"); 
-  }
-
-  if (bear4) { 
-    bear4.classList.remove("active"); 
-  }
-
-  if (bear5) { 
-    bear5.classList.remove("active"); 
-  }
-
-  if (bear6) { 
-    bear6.classList.remove("active"); 
-  }
+  if (bear1) { bear1.classList.remove("active"); }
+  if (bear2) { bear2.classList.remove("active"); }
+  if (bear3) { bear3.classList.remove("active"); }
+  if (bear4) { bear4.classList.remove("active"); }
+  if (bear5) { bear5.classList.remove("active"); }
+  if (bear6) { bear6.classList.remove("active"); }
 }
 
+// I’m using this helper to keep the logic in one place
 function showOnlySlide(slideElement, bearElement) {
   hideAllSlides();
   resetBears();
@@ -90,32 +62,16 @@ function showOnlySlide(slideElement, bearElement) {
   }
 }
 
-// I’m using named functions for each bear to click
-function handleBear1Click() { 
-  showOnlySlide(slide1, bear1); 
-}
-
-function handleBear2Click() {
-  showOnlySlide(slide2, bear2); 
-}
-
-function handleBear3Click() {
-   showOnlySlide(slide3, bear3); 
-}
-
-function handleBear4Click() {
-   showOnlySlide(slide4, bear4); 
-}
-
-function handleBear5Click() { 
-  showOnlySlide(slide5, bear5);
-}
-
-function handleBear6Click() {
-   showOnlySlide(slide6, bear6); 
-}
+// I’m using named functions for each bear click
+function handleBear1Click() { showOnlySlide(slide1, bear1); }
+function handleBear2Click() { showOnlySlide(slide2, bear2); }
+function handleBear3Click() { showOnlySlide(slide3, bear3); }
+function handleBear4Click() { showOnlySlide(slide4, bear4); }
+function handleBear5Click() { showOnlySlide(slide5, bear5); }
+function handleBear6Click() { showOnlySlide(slide6, bear6); }
 
 if (bear1 && slide1) {
+  // I’m setting a default slide so the first bear is active on load
   slide1.classList.add("show");
   bear1.classList.add("active");
 
@@ -125,36 +81,66 @@ if (bear1 && slide1) {
   bear4.addEventListener("click", handleBear4Click);
   bear5.addEventListener("click", handleBear5Click);
   bear6.addEventListener("click", handleBear6Click);
-
 }
 
+
 // GSAP Hero Animation
-// I’m animating the hero section using GSAP
-// Reference: https://codepen.io/cassie-codes/pen/jOwyPrJ
+// I’m animating the hero section using GSAP so it feels playful and alive
 
 const hiImg = document.querySelector(".hi-img");
-const lilmeWrap = document.querySelector(".lilme-wrap");
+const lilmeAvatar = document.querySelector(".lilme-avatar");
+const lilmeCircle = document.querySelector(".lilme-circle");
 const nameLine = document.querySelector(".name-line");
 const subtitle = document.querySelector(".subtitle");
 const learnButton = document.querySelector(".section-learn-btn");
 
-if (typeof gsap !== "undefined" && hiImg && lilmeWrap && nameLine && subtitle) {
+if (typeof gsap !== "undefined" && hiImg && lilmeAvatar && nameLine && subtitle) {
 
-  const heroTimeline = gsap.timeline({
-    defaults: { duration: 0.8, ease: "power3.out" }
+  const heroTimeline = gsap.timeline();
+
+  // I’m bringing in the “Hi” image first to introduce the section
+  heroTimeline.from(hiImg, {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: "power3.out"
   });
 
-  heroTimeline.from(hiImg, { opacity: 0, y: 40 });
-  heroTimeline.from(lilmeWrap, { opacity: 0, y: 50 }, "-=0.3");
-  heroTimeline.from(nameLine, { opacity: 0, y: 20 }, "-=0.2");
-  heroTimeline.from(subtitle, { opacity: 0, y: 20 }, "-=0.25");
+  // Only the avatar pops up like my Scrolly Me animation
+  //Reference: https://codepen.io/cassie-codes/pen/jOwyPrJ
+  heroTimeline.from(lilmeAvatar, {
+    yPercent: 100,
+    opacity: 1,
+    duration: 1,
+    ease: "elastic.out(0.5, 0.4)"
+  }, "-=0.2");
+
+  // Then I reveal my name and subtitle to finish the hero intro
+  heroTimeline.from(nameLine, {
+    opacity: 0,
+    y: 20,
+    duration: 0.7,
+    ease: "power3.out"
+  }, "-=0.3");
+
+  heroTimeline.from(subtitle, {
+    opacity: 0,
+    y: 20,
+    duration: 0.7,
+    ease: "power3.out"
+  }, "-=0.3");
 
   if (learnButton) {
-    heroTimeline.from(learnButton, { opacity: 0, y: 15 }, "-=0.3");
+    heroTimeline.from(learnButton, {
+      opacity: 0,
+      y: 15,
+      duration: 0.6,
+      ease: "power3.out"
+    }, "-=0.3");
   }
 
-  // I added a simple float effect on the hero image
-  gsap.to(lilmeWrap, {
+  // I’m keeping the avatar gently floating to add a soft motion loop
+  gsap.to(lilmeAvatar, {
     y: -10,
     duration: 2.4,
     repeat: -1,
@@ -162,14 +148,20 @@ if (typeof gsap !== "undefined" && hiImg && lilmeWrap && nameLine && subtitle) {
     ease: "sine.inOut",
     delay: 1.6
   });
+
+  // I’m giving the circle a subtle glow so the hero feels more magical
+  if (lilmeCircle) {
+    gsap.to(lilmeCircle, {
+      scale: 1.03,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+  }
 }
 
-
-
-//
 // Video Player
-// I built a custom video player here
-//
 
 const video = document.querySelector("#player-container video");
 const videoControls = document.querySelector("#video-controls");
@@ -179,13 +171,22 @@ const stopButton = document.querySelector("#stop-button");
 const changeVol = document.querySelector("#change-vol");
 const fullScreenButton = document.querySelector("#full-screen");
 
-function handlePlayClick() { video.play(); }
-function handlePauseClick() { video.pause(); }
+function handlePlayClick() {
+  video.play();
+}
+
+function handlePauseClick() {
+  video.pause();
+}
+
 function handleStopClick() {
   video.pause();
   video.currentTime = 0;
 }
-function handleVolumeChange() { video.volume = changeVol.value; }
+
+function handleVolumeChange() {
+  video.volume = changeVol.value;
+}
 
 function handleFullScreenClick() {
   if (video.requestFullscreen) {
@@ -197,6 +198,7 @@ function handleFullScreenClick() {
   }
 }
 
+// I’m wrapping the video logic so it only runs if the elements exist
 function initVideoPlayer() {
   if (!video || !videoControls) {
     return;
@@ -215,11 +217,8 @@ function initVideoPlayer() {
 initVideoPlayer();
 
 
-
-//
 // About Page
-// I’m handling the About page behaviour here
-//
+// I’m handling the About page behaviour here for the Core / Work / Love sections
 
 const orbitSection = document.querySelector(".orbit-con");
 
@@ -248,7 +247,7 @@ if (orbitSection) {
   const allHotspots = document.querySelectorAll(".hotspot");
 
 
-  // I’m using functions to reset everything before showing a new state
+  // I’m resetting everything so only one state (Core / Work / Love) is active at a time
   function hideAllAbout() {
     coreBtn.classList.remove("is-active");
     workBtn.classList.remove("is-active");
@@ -273,6 +272,7 @@ if (orbitSection) {
     allHotspots.forEach(removeHotspotActive);
   }
 
+  // I’m showing my core personality here
   function showCore() {
     hideAllAbout();
     coreBtn.classList.add("is-active");
@@ -282,6 +282,7 @@ if (orbitSection) {
     coreList.classList.add("is-active");
   }
 
+  // I’m switching to my work side here
   function showWork() {
     hideAllAbout();
     workBtn.classList.add("is-active");
@@ -291,6 +292,7 @@ if (orbitSection) {
     workList.classList.add("is-active");
   }
 
+  // I’m switching to things I love here
   function showLove() {
     hideAllAbout();
     loveBtn.classList.add("is-active");
@@ -304,7 +306,7 @@ if (orbitSection) {
     oneSpot.classList.remove("is-active");
   }
 
-  // I’m activating the clicked hotspot here
+  // I’m activating the clicked hotspot so the right bear lights up
   function handleHotspotClick(event) {
     const clickedSpot = event.currentTarget;
     allHotspots.forEach(removeHotspotActive);
@@ -321,16 +323,12 @@ if (orbitSection) {
 
   allHotspots.forEach(setupHotspotClick);
 
-  // I want Core to show first
+  // I want Core to show first when you land on this page
   showCore();
 }
 
-
-
-//
 // Contact Page Animations
-// I added simple gsap fades for the contact page
-//
+// I added simple gsap fade animation for the contact page to make the messages feel softer
 
 const contactCard = document.querySelector(".contact-card-inner");
 
