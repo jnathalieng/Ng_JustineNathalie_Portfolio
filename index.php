@@ -33,9 +33,10 @@ function getPosterByIndex($i) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/grid.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
+  <script type="module" src="js/main.js"></script>
 </head>
 
-<body class="site">
+<body data-page="homepagesliders" class="site">
   <h1 class="hidden">JN Designs Portfolio Website</h1>
 
   <div id="sticky-nav-con">
@@ -154,6 +155,5 @@ function getPosterByIndex($i) {
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
