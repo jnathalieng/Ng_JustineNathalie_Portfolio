@@ -4,7 +4,10 @@ import { videoplayer } from "./modules/videoplayer.js";
 import { homepagesliders } from "./modules/homepagesliders.js";
 import { contact } from "./modules/contact.js";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 import { burgerMenu } from "./modules/burgermenu.js";
 import { gsapAnimations } from "./modules/gsap.js";
 
