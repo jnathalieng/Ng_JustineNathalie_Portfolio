@@ -1,0 +1,109 @@
+/* HEADER */
+
+#sticky-nav-con {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e3e3e3;
+  width: 100%;
+  padding: 0; 
+}
+
+
+.head {
+  width: 100%;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.logo img {
+  display: block;
+  height: 60px;
+  width: auto;
+}
+
+/* NAV */
+
+#main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.burger-btn {
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* Mobile menu panel (hidden by default) */
+
+.menu-panel {
+  position: absolute;
+  top: 68px;
+  right: 16px;
+  background-color: #ffffff;
+  border: 1px solid #e3e3e3;
+  padding: 8px 16px;
+
+  display: none;
+}
+
+.menu-panel.menu-open {
+  display: block;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-list li + li {
+  margin-top: 8px;
+}
+
+.menu-list a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #707070;
+}
+
+.menu-list a:hover {
+  color: #a2d2ff;
+}
+
+/* Desktop layout */
+
+@media screen and (min-width: 768px) {
+  .burger-btn {
+    display: none;
+  }
+
+  .menu-panel {
+    position: static;
+    display: block;
+    border: none;
+    padding: 0;
+  }
+
+  .menu-list {
+    display: flex;
+    gap: 24px;
+  }
+
+  .menu-list li + li {
+    margin-top: 0;
+  }
+
+  .menu-list a {
+    font-size: 16px;
+  }
+}

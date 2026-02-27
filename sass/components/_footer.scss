@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+#site-footer {
+  border-top: 1px solid $light-gray;
+  padding: 10px 20px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-inner p {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 16px;
+  color: $dark-gray;
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-icons img {
+  width: 26px;
+  height: auto;
+  display: block;
+}
