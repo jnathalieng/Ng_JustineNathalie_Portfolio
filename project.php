@@ -5,7 +5,7 @@ $database = new \Portfolio\Database();
 $connection = $database->connect();
 
 $stmt = $connection->prepare(
-  'SELECT project_id, title, description, category, date
+  'SELECT project_id, title, description, category, date, url_path
    FROM projects
    ORDER BY date DESC'
 );
@@ -16,6 +16,29 @@ function categoryClass($category) {
   $c = strtolower(trim($category ?? ''));
   $c = preg_replace('/[^a-z0-9]+/', '-', $c);
   return trim($c, '-');
+}
+
+function projectLink($p) {
+  $base = '/Ng_JustineNathalie_Portfolio/';
+  $id = (int)($p['project_id'] ?? 0);
+
+  if ($id === 1) {
+    return $base . 'squeezit.php';
+  }
+
+  if ($id === 2) {
+    return $base . 'seven.php';
+  }
+
+  $path = trim($p['url_path'] ?? '');
+  if ($path !== '') {
+    if (preg_match('#^(https?://|/)#', $path)) {
+      return $path;
+    }
+    return $base . ltrim($path, '/');
+  }
+
+  return $base . 'single_project.php?id=' . $id;
 }
 ?>
 <!DOCTYPE html>
@@ -74,7 +97,7 @@ function categoryClass($category) {
             <?php else : ?>
               <?php foreach ($projects as $p) : ?>
                 <div class="work-column <?php echo htmlspecialchars(categoryClass($p['category'] ?? '')); ?>">
-                  <a href="single_project.php?id=<?php echo (int)$p['project_id']; ?>" class="work-link">
+                  <a href="<?php echo htmlspecialchars(projectLink($p)); ?>" class="work-link">
                     <div class="work-item">
                       <div class="work-photo-box">
                         <div class="work-thumb">
