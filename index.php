@@ -1,0 +1,166 @@
+<?php
+require_once __DIR__ . '/includes/database.php';
+
+$database = new \Portfolio\Database();
+$connection = $database->connect();
+
+$stmt = $connection->prepare(
+  'SELECT project_id, title, description
+   FROM projects
+   ORDER BY project_id DESC
+   LIMIT 3'
+);
+$stmt->execute();
+$featured = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+function getPosterByIndex($i) {
+  $posters = [
+    'images/Squeezit_Poster.png',
+    'images/Lumibuds-Poster.png',
+    'images/Seven_Poster.png'
+  ];
+  return $posters[$i] ?? 'images/JN_Cover.png';
+}
+
+$connectSlideNum = 3 + (is_array($featured) ? count($featured) : 0);
+if ($connectSlideNum < 6) {
+  $connectSlideNum = 6;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>JN Designs Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/grid.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body data-page="homepagesliders" class="site">
+  <h1 class="hidden">JN Designs Portfolio Website</h1>
+
+  <div id="sticky-nav-con">
+    <header class="head" id="site-header">
+      <div class="logo">
+        <a href="index.php">
+          <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        </a>
+      </div>
+
+      <nav id="main-nav">
+        <button class="burger-btn" id="burger-button"><i class="fa fa-bars"></i></button>
+
+        <div id="burger-con" class="menu-panel">
+          <ul class="menu-list">
+            <li><a href="index.php">HOME</a></li>
+            <li><a href="about.html">ABOUT ME</a></li>
+            <li><a href="project.html">WORKS</a></li>
+            <li><a href="docs/Resume-JustineNg.pdf" target="_blank">RESUME</a></li>
+            <li><a href="contact.php">CONTACT</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <main id="content" class="main">
+
+    <section class="slide hero-section" id="slide1">
+      <div class="hero-inner">
+        <div class="hero-top">
+          <img src="images/Hi_Image.png" alt="Handwritten Hi graphic" class="hi-img">
+
+          <div class="lilme-wrap">
+            <div class="lilme-circle"></div>
+            <img src="images/Jus_Vector_Portfolio.svg" alt="Illustration of Justine Nathalie" class="lilme-avatar">
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <h2 class="name-line">I’M <span>JUSTINE NATHALIE</span></h2>
+          <p class="subtitle">I create websites and digital products with a splash of design, a sprinkle of code, and a whole lot of creativity.</p>
+
+          <div class="section-btn-inner">
+            <a href="about.html" class="section-learn-btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide slider-section video-section" id="slide2">
+      <div class="grid-con">
+        <section id="player-container" class="col-span-full">
+          <video controls preload="metadata" poster="images/Video_Poster.png">
+            <source src="video/Ng_JustineNathalie_DemoReel.mp4" type="video/mp4">
+            <source src="video/Ng_JustineNathalie_DemoReel.webm" type="video/webm">
+            <p>Your browser does not support HTML5 video.</p>
+          </video>
+
+          <div class="video-controls hidden" id="video-controls">
+            <button id="play-button"><i class="fa fa-play-circle-o"></i></button>
+            <button id="pause-button"><i class="fa fa-pause-circle-o"></i></button>
+            <button id="stop-button"><i class="fa fa-stop-circle-o"></i></button>
+            <i class="fa fa-volume-up"></i>
+            <input type="range" id="change-vol" step="0.05" min="0" max="1" value="1">
+            <button id="full-screen"><i class="fa fa-arrows-alt"></i></button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <?php if (!empty($featured)) : ?>
+      <?php foreach ($featured as $i => $p) : ?>
+        <section class="slide slider-section fw-section" id="slide<?php echo 3 + $i; ?>">
+          <div class="fw-title-img-wrap">
+            <img src="<?php echo htmlspecialchars(getPosterByIndex($i)); ?>" alt="<?php echo htmlspecialchars($p['title']); ?> project poster" class="fw-title-img">
+          </div>
+          <h3 class="fw-title"><?php echo htmlspecialchars($p['title']); ?></h3>
+          <p class="fw-subtitle"><?php echo htmlspecialchars($p['description'] ?? ''); ?></p>
+          <div class="section-btn-inner">
+            <a href="single_project.php?id=<?php echo (int)$p['project_id']; ?>" class="section-learn-btn">VIEW PROJECT</a>
+          </div>
+        </section>
+      <?php endforeach; ?>
+    <?php endif; ?>
+
+    <section class="slide slider-section connect-section" id="slide<?php echo $connectSlideNum; ?>">
+      <h3 class="fw-title">LET’S CONNECT</h3>
+      <p class="fw-subtitle">I’d love to collaborate on playful web, motion, and 3D projects.</p>
+      <div class="section-btn-inner">
+        <a href="contact.php" class="section-learn-btn">Contact Me</a>
+      </div>
+    </section>
+
+    <div class="bear-slider">
+      <button id="bear1" class="bear"><img src="images/PBearHead.png" alt="Pink bear icon – slide 1"></button>
+      <button id="bear2" class="bear"><img src="images/BBearHead.png" alt="Blue bear icon – slide 2"></button>
+      <button id="bear3" class="bear"><img src="images/PuBearHead.png" alt="Purple bear icon – slide 3"></button>
+      <button id="bear4" class="bear"><img src="images/PBearHead.png" alt="Pink bear icon – slide 4"></button>
+      <button id="bear5" class="bear"><img src="images/BBearHead.png" alt="Blue bear icon – slide 5"></button>
+      <button id="bear6" class="bear"><img src="images/PuBearHead.png" alt="Purple bear icon – slide 6"></button>
+    </div>
+
+  </main>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <p>Created by J. Nathalie ©2024</p>
+
+      <div class="footer-icons">
+        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
+        <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
+        <a href="https://www.instagram.com/jnathalieng" target="_blank"><img src="images/Instagram.png" alt="Instagram icon"></a>
+        <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
+        <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
