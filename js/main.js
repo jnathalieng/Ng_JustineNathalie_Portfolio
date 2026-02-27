@@ -3,7 +3,7 @@ import { videoplayer } from "./modules/videoplayer.js";
 import { homepagesliders } from "./modules/homepagesliders.js";
 import { contact } from "./modules/contact.js";
 import { burgerMenu } from "./modules/burgermenu.js";
-import { gsapAnimations } from "./modules/gsap.js";
+import { gsapAnimations } from "./modules/GSAPanimation.js";
 
 burgerMenu();
 
