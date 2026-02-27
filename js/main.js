@@ -2,8 +2,23 @@
 const burgerButton = document.querySelector("#burger-button");
 const burgerCon = document.querySelector("#burger-con");
 
+<<<<<<< Updated upstream
 function toggleMenu() {
   burgerCon.classList.toggle("menu-open");
+=======
+import { about } from "./modules/about.js";
+import { videoplayer } from "./modules/videoplayer.js";
+import { homepagesliders } from "./modules/homepagesliders.js";
+import { contact } from "./modules/contact.js";
+import { burgerMenu } from "./modules/burger.js";
+import { gsapAnimations } from "./modules/GSAPanimation.js";
+
+burgerMenu();
+gsapAnimations();
+
+if (document.body.dataset.page === "about") {
+  about();
+>>>>>>> Stashed changes
 }
 
 if (burgerButton && burgerCon) {
@@ -77,6 +92,7 @@ function resetBears() {
   }
 }
 
+<<<<<<< Updated upstream
 function showOnlySlide(slideElement, bearElement) {
   hideAllSlides();
   resetBears();
@@ -366,3 +382,12 @@ if (errorBox && typeof gsap !== "undefined") {
     delay: 0.1
   });
 }
+=======
+if (
+  document.body.dataset.page === "homepagesliders" ||
+  document.body.dataset.page === "contact"
+) {
+  gsapAnimations();
+}
+
+>>>>>>> Stashed changes
