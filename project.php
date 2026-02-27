@@ -72,7 +72,7 @@ function projectLink($p) {
           <ul class="menu-list">
             <li><a href="index.html">HOME</a></li>
             <li><a href="about.html">ABOUT ME</a></li>
-            <li><a href="project.html">WORKS</a></li>
+            <li><a href="project.php">WORKS</a></li>
             <li><a href="docs/Ng_JustineNathalie_Resume.pdf" target="_blank">RESUME</a></li>
             <li><a href="contact.php">CONTACT</a></li>
           </ul>
