@@ -1,46 +1,51 @@
 <?php
-    $db_host = 'localhost:8888';
-    $db_user = 'root';
-    $db_pass = 'root';
-    $db_name = 'user_form_DB';
+$db_host = 'localhost:8889';
+$db_user = 'root';
+$db_pass = 'root';
+$db_name = 'ng_portfolio';
 
-    $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-    $errors = array();
+$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
-    $fname = mysqli_real_escape_string($connection, $_POST['fname']);
-    if ($fname == NULL) {
-        $errors[] = "First name field is empty.";
+$errors = array();
+
+$name = mysqli_real_escape_string($connection, $_POST['name']);
+if ($name == NULL) {
+    $errors[] = "Name field is empty.";
+}
+
+$email = $_POST['email'];
+if ($email == NULL) {
+    $errors[] = "Email field is empty.";
+}
+
+$message = mysqli_real_escape_string($connection, $_POST['message']);
+if ($message == NULL) {
+    $errors[] = "Message field is empty.";
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "\"" . $email . "\" is not a valid email address.";
+}
+
+$errcount = count($errors);
+
+if ($errcount > 0) {
+
+    $errmsg = array();
+
+    for ($i = 0; $i < $errcount; $i++) {
+        $errmsg[] = $errors[$i];
     }
 
-    $lname = mysqli_real_escape_string($connection, $_POST['lname']);
-    if ($lname == NULL) {
-        $errors[] = "Last name field is empty.";
-    }
+    echo json_encode(array("errors" => $errmsg));
 
-    $email = $_POST['email'];
-    if ($email == NULL) {
-        $errors[] = "Email field is empty.";
-    }
+} else {
 
-    $message = mysqli_real_escape_string($connection, $_POST['message']);
-    if ($city == NULL) {
-        $errors[] = "Message field is empty.";
-    }
+    $querystring = "INSERT INTO contacts (contact_name, contact_email, contact_message)
+                    VALUES ('" . $name . "', '" . $email . "', '" . $message . "')";
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "\"" . $email . "\" is not a valid email address.";
-    }
+    mysqli_query($connection, $querystring);
 
-    $errcount = count($errors);
-    if ($errcount > 0) {
-        $errmsg = array();
-        for ($i = 0; $i < $errcount; $i++) {
-            $errmsg[] = $errors[$i];
-        }
-        echo json_encode(array("errors" => $errmsg));
-    } else {
-        $querystring = "INSERT INTO tbl_users(user_id,user_lname,user_fname, user_email, user_message) VALUES(NULL,'" . $lname . "','" . $fname . "','" . $email . "','" . $message . "')";
-        $qpartner = mysqli_query($connection, $querystring);
-        echo json_encode(array("message" => "Email submitted. I look forward to connecting!"));
-    }
+    echo json_encode(array("message" => "Email submitted. I look forward to connecting!"));
+}
 ?>
