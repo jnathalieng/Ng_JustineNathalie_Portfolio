@@ -1,0 +1,19 @@
+{
+    "name": "nireland/portfolio",
+    "description": "My Portfolio!",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Portfolio\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Justine Nathalie Ng"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
