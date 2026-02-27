@@ -59,7 +59,7 @@ if ($connectSlideNum < 6) {
           <ul class="menu-list">
             <li><a href="index.php">HOME</a></li>
             <li><a href="about.html">ABOUT ME</a></li>
-            <li><a href="project.html">WORKS</a></li>
+            <li><a href="project.php">WORKS</a></li>
             <li><a href="docs/Resume-JustineNg.pdf" target="_blank">RESUME</a></li>
             <li><a href="contact.php">CONTACT</a></li>
           </ul>
