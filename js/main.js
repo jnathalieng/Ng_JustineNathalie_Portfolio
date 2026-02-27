@@ -1,3 +1,4 @@
+
 import { about } from "./modules/about.js";
 import { videoplayer } from "./modules/videoplayer.js";
 import { homepagesliders } from "./modules/homepagesliders.js";
@@ -19,22 +20,3 @@ if (document.body.dataset.page === "contact") {
   contact();
 }
 
-<<<<<<< Updated upstream
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> Stashed changes
