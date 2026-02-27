@@ -9,20 +9,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/main.css">
-  <script type="module" src="js/main.js"></script>
+
   <title>JN Designs Portfolio</title>
 </head>
 
- <body data-page="contact" class="site">
+<body data-page="contact" class="site">
 
   <h1 class="hidden">JN Designs Portfolio Website</h1>
 
-  <!-- HEADER -->
   <div id="sticky-nav-con">
-    <header class="head">
+    <header class="head" id="site-header">
 
       <div class="logo">
-        <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        <a href="index.php">
+          <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        </a>
       </div>
 
       <nav id="main-nav">
@@ -32,15 +33,10 @@
 
         <div id="burger-con" class="menu-panel">
           <ul class="menu-list">
-            <li><a href="index.html">HOME</a></li>
+            <li><a href="index.php">HOME</a></li>
             <li><a href="about.html">ABOUT ME</a></li>
-<<<<<<< Updated upstream
-            <li><a href="work.html">WORKS</a></li>
-            <li><a href="docs/Resume-JustineNg.pdf" target="_blank">RESUME</a></li>
-=======
             <li><a href="project.html">WORKS</a></li>
             <li><a href="docs/Ng_JustineNathalie_Resume.pdf" target="_blank">RESUME</a></li>
->>>>>>> Stashed changes
             <li><a href="contact.php">CONTACT</a></li>
           </ul>
         </div>
@@ -49,7 +45,6 @@
     </header>
   </div>
 
-  <!-- CONTACT SECTION -->
   <main class="site-main">
     <section class="contact-wrapper">
 
@@ -60,7 +55,6 @@
 
             <div class="grid-con contact-grid">
 
-              <!-- LEFT SIDE -->
               <div class="col-span-full m-col-span-5 l-col-span-5 contact-left">
                 <h2 class="contact-heading">CONTACT ME</h2>
 
@@ -77,7 +71,6 @@
 
               <div class="col-span-full m-col-span-1 l-col-span-1 contact-divider"></div>
 
-              <!-- RIGHT SIDE FORM -->
               <div class="col-span-full m-col-span-6 l-col-span-6 contact-right">
 
                 <form method="post" action="CMS/adduser.php" class="contact-form">
@@ -85,55 +78,28 @@
                   <section id="feedback"></section>
 
                   <div class="contact-field-group">
-                    <label class="contact-label" for="name">
-                      NAME:<span>*</span>
-                    </label>
-                    <input
-                      class="contact-input"
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Your Name"
-                      required>
+                    <label class="contact-label" for="name">NAME:<span>*</span></label>
+                    <input class="contact-input" type="text" id="name" name="name" placeholder="Your Name" required>
                   </div>
 
                   <div class="contact-field-group">
-                    <label class="contact-label" for="email">
-                      EMAIL:<span>*</span>
-                    </label>
-                    <input
-                      class="contact-input"
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Your Email Address"
-                      required>
+                    <label class="contact-label" for="email">EMAIL:<span>*</span></label>
+                    <input class="contact-input" type="email" id="email" name="email" placeholder="Your Email Address" required>
                   </div>
 
                   <div class="contact-field-group">
                     <div class="contact-message-row">
-                      <label class="contact-label" for="message">
-                        MESSAGE:<span>*</span>
-                      </label>
+                      <label class="contact-label" for="message">MESSAGE:<span>*</span></label>
                       <span class="contact-char-note">(1000 Characters)</span>
                     </div>
 
-                    <textarea
-                      class="contact-textarea"
-                      id="message"
-                      name="message"
-                      placeholder="Your Message"
-                      required></textarea>
+                    <textarea class="contact-textarea" id="message" name="message" placeholder="Your Message" required></textarea>
                   </div>
 
-                  <p class="contact-required-note">
-                    **Denotes a required field.
-                  </p>
+                  <p class="contact-required-note">**Denotes a required field.</p>
 
                   <div class="contact-actions">
-                    <button class="contact-submit" type="submit">
-                      SEND
-                    </button>
+                    <button class="contact-submit" type="submit">SEND</button>
                   </div>
 
                 </form>
@@ -148,32 +114,21 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer id="site-footer">
     <div class="footer-inner">
       <p>Created by J. Nathalie ©2025</p>
 
       <div class="footer-icons">
-        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank">
-          <img src="images/Linkedin.png" alt="LinkedIn icon">
-        </a>
-        <a href="#">
-          <img src="images/Facebook.png" alt="Facebook icon">
-        </a>
-        <a href="https://www.instagram.com/jnathalieng" target="_blank">
-          <img src="images/Instagram.png" alt="Instagram icon">
-        </a>
-        <a href="#">
-          <img src="images/Youtube.png" alt="YouTube icon">
-        </a>
-        <a href="mailto:ngjnathalie.ca@gmail.com">
-          <img src="images/Email.png" alt="Email icon">
-        </a>
+        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
+        <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
+        <a href="https://www.instagram.com/jnathalieng" target="_blank"><img src="images/Instagram.png" alt="Instagram icon"></a>
+        <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
+        <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
       </div>
     </div>
   </footer>
 
-  
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
