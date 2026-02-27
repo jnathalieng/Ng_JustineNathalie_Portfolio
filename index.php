@@ -7,7 +7,7 @@ $connection = $database->connect();
 $stmt = $connection->prepare(
   'SELECT project_id, title, description
    FROM projects
-   ORDER BY date DESC
+   ORDER BY project_id DESC
    LIMIT 3'
 );
 $stmt->execute();
@@ -21,6 +21,11 @@ function getPosterByIndex($i) {
   ];
   return $posters[$i] ?? 'images/JN_Cover.png';
 }
+
+$connectSlideNum = 3 + (is_array($featured) ? count($featured) : 0);
+if ($connectSlideNum < 6) {
+  $connectSlideNum = 6;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,15 +38,18 @@ function getPosterByIndex($i) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/grid.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
-<body class="site">
+<body data-page="homepagesliders" class="site">
   <h1 class="hidden">JN Designs Portfolio Website</h1>
 
   <div id="sticky-nav-con">
     <header class="head" id="site-header">
       <div class="logo">
-        <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        <a href="index.php">
+          <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        </a>
       </div>
 
       <nav id="main-nav">
@@ -120,7 +128,7 @@ function getPosterByIndex($i) {
       <?php endforeach; ?>
     <?php endif; ?>
 
-    <section class="slide slider-section connect-section" id="slide6">
+    <section class="slide slider-section connect-section" id="slide<?php echo $connectSlideNum; ?>">
       <h3 class="fw-title">LET’S CONNECT</h3>
       <p class="fw-subtitle">I’d love to collaborate on playful web, motion, and 3D projects.</p>
       <div class="section-btn-inner">
@@ -144,16 +152,15 @@ function getPosterByIndex($i) {
       <p>Created by J. Nathalie ©2024</p>
 
       <div class="footer-icons">
-        <a href="www.linkedin.com/in/jnathalieng"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
+        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
         <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
-        <a href="www.instagram.com/jnathalieng"><img src="images/Instagram.png" alt="Instagram icon"></a>
+        <a href="https://www.instagram.com/jnathalieng" target="_blank"><img src="images/Instagram.png" alt="Instagram icon"></a>
         <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
         <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
       </div>
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
