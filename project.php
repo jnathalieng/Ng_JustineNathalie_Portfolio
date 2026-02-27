@@ -41,6 +41,7 @@ function projectLink($p) {
   return $base . 'single_project.php?id=' . $id;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,17 +51,18 @@ function projectLink($p) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/main.css">
-  <script type="module" src="js/main.js"></script>
-  <title>JN Designs Portfolio</title>
+  <title>JN Designs Portfolio – Project Page</title>
 </head>
 
-<body class="site">
+<body data-page="project" class="site">
   <h1 class="hidden">JN Designs Portfolio Website</h1>
 
   <div id="sticky-nav-con">
     <header class="head">
       <div class="logo">
-        <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        <a href="index.html">
+          <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        </a>
       </div>
 
       <nav id="main-nav">
@@ -68,10 +70,10 @@ function projectLink($p) {
 
         <div id="burger-con" class="menu-panel">
           <ul class="menu-list">
-            <li><a href="index.php">HOME</a></li>
+            <li><a href="index.html">HOME</a></li>
             <li><a href="about.html">ABOUT ME</a></li>
-            <li><a href="project.php">WORKS</a></li>
-            <li><a href="docs/Resume-JustineNg.pdf" target="_blank">RESUME</a></li>
+            <li><a href="project.html">WORKS</a></li>
+            <li><a href="docs/Ng_JustineNathalie_Resume.pdf" target="_blank">RESUME</a></li>
             <li><a href="contact.php">CONTACT</a></li>
           </ul>
         </div>
@@ -93,25 +95,89 @@ function projectLink($p) {
 
           <div class="works-row" id="works-row">
 
-            <?php if (empty($projects)) : ?>
-              <p class="works-intro">No projects found yet.</p>
-            <?php else : ?>
-              <?php foreach ($projects as $p) : ?>
-                <div class="work-column <?php echo htmlspecialchars(categoryClass($p['category'] ?? '')); ?>">
-                  <a href="<?php echo htmlspecialchars(projectLink($p)); ?>" class="work-link">
-                    <div class="work-item">
-                      <div class="work-photo-box">
-                        <div class="work-thumb">
-                          <img src="images/JN_Cover.png" alt="<?php echo htmlspecialchars($p['title'] ?? 'Project'); ?>" class="work-img">
-                        </div>
-                      </div>
-                      <h3 class="work-title"><?php echo htmlspecialchars($p['title'] ?? ''); ?></h3>
-                      <p class="work-text"><?php echo htmlspecialchars($p['description'] ?? ''); ?></p>
+            <div class="work-column branding">
+              <a href="seven.html" class="work-link">
+                <div class="work-item">
+                  <div class="work-photo-box">
+                    <div class="work-thumb">
+                      <img src="images/Seven_Cover.png" alt="SEVEN Pet Care branding preview" class="work-img">
                     </div>
-                  </a>
+                  </div>
+                  <h3 class="work-title">SEVEN Pet Care</h3>
+                  <p class="work-text">SEVEN is a gentle, nature-inspired pet-care brand built around the idea of “seven days of pet love.”</p>
                 </div>
-              <?php endforeach; ?>
-            <?php endif; ?>
+              </a>
+            </div>
+
+            <div class="work-column branding">
+              <a href="squeezit.html" class="work-link">
+                <div class="work-item">
+                  <div class="work-photo-box">
+                    <div class="work-thumb">
+                      <img src="images/Squeezit_Cover.png" alt="Squeez It branding preview" class="work-img">
+                    </div>
+                  </div>
+                  <h3 class="work-title">Squeez It!</h3>
+                  <p class="work-text">Squeezit is a character-driven rebrand of a fruit-flavoured juice drink, created to feel like a tiny playground in a bottle.</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="work-column motion">
+              <a href="lumibuds.html" class="work-link">
+                <div class="work-item">
+                  <div class="work-photo-box">
+                    <div class="work-thumb">
+                      <img src="images/LumiBuds_Cover.png" alt="Lumi Buds launch preview" class="work-img">
+                    </div>
+                  </div>
+                  <h3 class="work-title">Lumi Buds</h3>
+                  <p class="work-text">Lumi Buds is a dreamy wireless earbuds concept blending gem-like forms, metallic finishes, and soft pastel lighting.</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="work-column web">
+              <a href="#" class="work-link">
+                <div class="work-item">
+                  <div class="work-photo-box">
+                    <div class="work-thumb">
+                      <img src="images/JN_Cover.png" alt="Industry Night Site preview" class="work-img comingsoon-img">
+                    </div>
+                  </div>
+                  <h3 class="work-title">Industry Night Site</h3>
+                  <p class="work-text">Coming soon. Not available.</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="work-column web">
+              <a href="#" class="work-link">
+                <div class="work-item">
+                  <div class="work-photo-box">
+                    <div class="work-thumb">
+                      <img src="images/JN_Cover.png" alt="Portfolio Website preview" class="work-img comingsoon-img">
+                    </div>
+                  </div>
+                  <h3 class="work-title">Portfolio Website</h3>
+                  <p class="work-text">Coming soon. Not available.</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="work-column motion">
+              <a href="#" class="work-link">
+                <div class="work-item">
+                  <div class="work-photo-box">
+                    <div class="work-thumb">
+                      <img src="images/JN_Cover.png" alt="Kids Bumper Channel preview" class="work-img comingsoon-img">
+                    </div>
+                  </div>
+                  <h3 class="work-title">Kids Bumper Channel</h3>
+                  <p class="work-text">Coming soon. Not available.</p>
+                </div>
+              </a>
+            </div>
 
           </div>
 
@@ -123,10 +189,11 @@ function projectLink($p) {
   <footer id="site-footer">
     <div class="footer-inner">
       <p>Created by J. Nathalie ©2024</p>
+
       <div class="footer-icons">
-        <a href="www.linkedin.com/in/jnathalieng"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
+        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
         <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
-        <a href="www.instagram.com/jnathalieng"><img src="images/Instagram.png" alt="Instagram icon"></a>
+        <a href="https://www.instagram.com/jnathalieng" target="_blank"><img src="images/Instagram.png" alt="Instagram icon"></a>
         <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
         <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
       </div>
@@ -134,6 +201,6 @@ function projectLink($p) {
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
