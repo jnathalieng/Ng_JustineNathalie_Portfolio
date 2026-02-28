@@ -122,63 +122,6 @@ function projectLink($p) {
                 </div>
               </a>
             </div>
-
-            <div class="work-column motion">
-              <a href="lumibuds.html" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/LumiBuds_Cover.png" alt="Lumi Buds launch preview" class="work-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">Lumi Buds</h3>
-                  <p class="work-text">Lumi Buds is a dreamy wireless earbuds concept blending gem-like forms, metallic finishes, and soft pastel lighting.</p>
-                </div>
-              </a>
-            </div>
-
-            <div class="work-column web">
-              <a href="#" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/JN_Cover.png" alt="Industry Night Site preview" class="work-img comingsoon-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">Industry Night Site</h3>
-                  <p class="work-text">Coming soon. Not available.</p>
-                </div>
-              </a>
-            </div>
-
-            <div class="work-column web">
-              <a href="#" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/JN_Cover.png" alt="Portfolio Website preview" class="work-img comingsoon-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">Portfolio Website</h3>
-                  <p class="work-text">Coming soon. Not available.</p>
-                </div>
-              </a>
-            </div>
-
-            <div class="work-column motion">
-              <a href="#" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/JN_Cover.png" alt="Kids Bumper Channel preview" class="work-img comingsoon-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">Kids Bumper Channel</h3>
-                  <p class="work-text">Coming soon. Not available.</p>
-                </div>
-              </a>
-            </div>
-
           </div>
 
         </div>
