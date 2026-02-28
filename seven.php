@@ -20,7 +20,6 @@ $images = $database->query(
     ['id' => 2]
 );
 
-// Index images by image_id for easy lookup
 $img = [];
 foreach ($images as $image) {
     $img[$image['image_id']] = $image;
@@ -72,9 +71,8 @@ foreach ($images as $image) {
     <section class="project-wrapper" id="project-seven">
       <div class="grid-con">
 
-        <!-- Hero Image: image_id 11 = Seven_Poster.png -->
         <div class="col-span-full m-col-start-2 m-col-end-12 l-col-start-3 l-col-end-11 project-hero">
-          <?php if (isset($img[11])): ?>
+          <?php if (isset($img[11])) : ?>
             <img src="<?php echo htmlspecialchars($img[11]['src']); ?>"
                  alt="<?php echo htmlspecialchars($img[11]['alt_text']); ?>"
                  class="project-hero-img">
@@ -86,30 +84,31 @@ foreach ($images as $image) {
           <h2 class="project-label">PROJECT:</h2>
           <h1 class="project-title"><?php echo htmlspecialchars($project['title']); ?></h1>
 
-          <h2 class="project-label">ABOUT:</h2>
-          <p class="project-text">
-            <?php echo nl2br(htmlspecialchars($project['About'] ?? $project['description'])); ?>
-          </p>
+          <?php if (!empty($project['About'])) : ?>
+            <h2 class="project-label">ABOUT:</h2>
+            <p class="project-text">
+              <?php echo htmlspecialchars($project['About']); ?>
+            </p>
+          <?php endif; ?>
 
           <h2 class="project-label">ROLE:</h2>
           <p class="project-role">Graphic Designer</p>
 
           <h2 class="project-label">CASE STUDY:</h2>
 
-          <?php if (!empty($project['Brand-Concept'])): ?>
+          <?php if (!empty($project['Brand-Concept'])) : ?>
             <h3 class="project-heading">Brand Concept &amp; Story</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['Brand-Concept'])); ?>
+              <?php echo htmlspecialchars($project['Brand-Concept']); ?>
             </p>
           <?php endif; ?>
 
-          <?php if (!empty($project['LogoDev'])): ?>
+          <?php if (!empty($project['LogoDev'])) : ?>
             <h3 class="project-heading">Logo Development</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['LogoDev'])); ?>
+              <?php echo htmlspecialchars($project['LogoDev']); ?>
             </p>
-            <!-- image_id 12 = Seven_IconMark.png -->
-            <?php if (isset($img[12])): ?>
+            <?php if (isset($img[12])) : ?>
               <div class="project-image-box">
                 <img src="<?php echo htmlspecialchars($img[12]['src']); ?>"
                      alt="<?php echo htmlspecialchars($img[12]['alt_text']); ?>"
@@ -118,13 +117,12 @@ foreach ($images as $image) {
             <?php endif; ?>
           <?php endif; ?>
 
-          <?php if (!empty($project['Brand-Identity'])): ?>
+          <?php if (!empty($project['Brand-Identity'])) : ?>
             <h3 class="project-heading">Brand Identity System</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['Brand-Identity'])); ?>
+              <?php echo htmlspecialchars($project['Brand-Identity']); ?>
             </p>
-            <!-- image_id 13 = Seven_ColorPalette.png -->
-            <?php if (isset($img[13])): ?>
+            <?php if (isset($img[13])) : ?>
               <div class="project-image-box">
                 <img src="<?php echo htmlspecialchars($img[13]['src']); ?>"
                      alt="<?php echo htmlspecialchars($img[13]['alt_text']); ?>"
@@ -133,15 +131,14 @@ foreach ($images as $image) {
             <?php endif; ?>
           <?php endif; ?>
 
-          <?php if (!empty($project['Packaging'])): ?>
+          <?php if (!empty($project['Packaging'])) : ?>
             <h3 class="project-heading">Packaging Design</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['Packaging'])); ?>
+              <?php echo htmlspecialchars($project['Packaging']); ?>
             </p>
-            <!-- image_id 14 = Seven_PM.png, 15 = SEVENPM2.png, 16 = SevenOM3.png -->
             <div class="project-image-box">
-              <?php foreach ([14, 15, 16] as $id): ?>
-                <?php if (isset($img[$id])): ?>
+              <?php foreach ([14, 15, 16] as $id) : ?>
+                <?php if (isset($img[$id])) : ?>
                   <img src="<?php echo htmlspecialchars($img[$id]['src']); ?>"
                        alt="<?php echo htmlspecialchars($img[$id]['alt_text']); ?>"
                        class="project-hero-img">
@@ -150,15 +147,14 @@ foreach ($images as $image) {
             </div>
           <?php endif; ?>
 
-          <?php if (!empty($project['In-Context'])): ?>
+          <?php if (!empty($project['In-Context'])) : ?>
             <h3 class="project-heading">Brand in Context</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['In-Context'])); ?>
+              <?php echo htmlspecialchars($project['In-Context']); ?>
             </p>
-            <!-- image_id 17 = Seven_SM.png, 18 = Seven_SM2.png -->
             <div class="project-image-box">
-              <?php foreach ([17, 18] as $id): ?>
-                <?php if (isset($img[$id])): ?>
+              <?php foreach ([17, 18] as $id) : ?>
+                <?php if (isset($img[$id])) : ?>
                   <img src="<?php echo htmlspecialchars($img[$id]['src']); ?>"
                        alt="<?php echo htmlspecialchars($img[$id]['alt_text']); ?>"
                        class="project-hero-img">
