@@ -1,47 +1,14 @@
 <?php
-require_once __DIR__ . '/includes/database.php';
+require_once __DIR__ . '/includes/Database.php';
 
 $database = new \Portfolio\Database();
-$connection = $database->connect();
 
-$stmt = $connection->prepare(
-  'SELECT project_id, title, description, category, date, url_path
+$projects = $database->query(
+  'SELECT project_id, title, description, category, date, page_link, image_path
    FROM projects
    ORDER BY date DESC'
 );
-$stmt->execute();
-$projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-function categoryClass($category) {
-  $c = strtolower(trim($category ?? ''));
-  $c = preg_replace('/[^a-z0-9]+/', '-', $c);
-  return trim($c, '-');
-}
-
-function projectLink($p) {
-  $base = '/Ng_JustineNathalie_Portfolio/';
-  $id = (int)($p['project_id'] ?? 0);
-
-  if ($id === 1) {
-    return $base . 'squeezit.php';
-  }
-
-  if ($id === 2) {
-    return $base . 'seven.php';
-  }
-
-  $path = trim($p['url_path'] ?? '');
-  if ($path !== '') {
-    if (preg_match('#^(https?://|/)#', $path)) {
-      return $path;
-    }
-    return $base . ltrim($path, '/');
-  }
-
-  return $base . 'single_project.php?id=' . $id;
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,33 +62,48 @@ function projectLink($p) {
 
           <div class="works-row" id="works-row">
 
-            <div class="work-column branding">
-              <a href="seven.php" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/Seven_Cover.png" alt="SEVEN Pet Care branding preview" class="work-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">SEVEN Pet Care</h3>
-                  <p class="work-text">SEVEN is a gentle, nature-inspired pet-care brand built around the idea of “seven days of pet love.”</p>
-                </div>
-              </a>
-            </div>
+            <?php if (empty($projects)) : ?>
+              <p class="work-text">No projects found.</p>
+            <?php else : ?>
 
-            <div class="work-column branding">
-              <a href="squeezit.php" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/Squeezit_Cover.png" alt="Squeez It branding preview" class="work-img">
+              <?php foreach ($projects as $p) : ?>
+                <?php
+                  $link = trim($p['page_link'] ?? '');
+                  if ($link === '') { $link = '#'; }
+
+                  $img = trim($p['image_path'] ?? '');
+                  if ($img === '') { $img = 'images/JN_Cover.png'; }
+
+                  $title = $p['title'] ?? '';
+                  $desc = $p['description'] ?? '';
+                ?>
+
+                <div class="work-column branding">
+                  <a href="<?php echo htmlspecialchars($link); ?>" class="work-link">
+                    <div class="work-item">
+                      <div class="work-photo-box">
+                        <div class="work-thumb">
+                          <img
+                            src="<?php echo htmlspecialchars($img); ?>"
+                            alt="<?php echo htmlspecialchars($title); ?> preview"
+                            class="work-img"
+                          >
+                        </div>
+                      </div>
+
+                      <h3 class="work-title"><?php echo htmlspecialchars($title); ?></h3>
+                      <p class="work-text"><?php echo htmlspecialchars($desc); ?></p>
+
                     </div>
-                  </div>
-                  <h3 class="work-title">Squeez It!</h3>
-                  <p class="work-text">Squeezit is a character-driven rebrand of a fruit-flavoured juice drink, created to feel like a tiny playground in a bottle.</p>
+                  </a>
                 </div>
-              </a>
-            </div>
+
+              <?php endforeach; ?>
+
+            <?php endif; ?>
+
+          </div>
+
         </div>
       </div>
     </section>
@@ -132,11 +114,17 @@ function projectLink($p) {
       <p>Created by J. Nathalie ©2024</p>
 
       <div class="footer-icons">
-        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
+        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank" rel="noopener">
+          <img src="images/Linkedin.png" alt="LinkedIn icon">
+        </a>
         <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
-        <a href="https://www.instagram.com/jnathalieng" target="_blank"><img src="images/Instagram.png" alt="Instagram icon"></a>
+        <a href="https://www.instagram.com/jnathalieng" target="_blank" rel="noopener">
+          <img src="images/Instagram.png" alt="Instagram icon">
+        </a>
         <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
-        <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
+        <a href="mailto:ngjnathalie.ca@gmail.com">
+          <img src="images/Email.png" alt="Email icon">
+        </a>
       </div>
     </div>
   </footer>

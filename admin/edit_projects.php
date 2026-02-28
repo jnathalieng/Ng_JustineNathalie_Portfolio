@@ -21,7 +21,8 @@ $project = [
     'description' => '',
     'date' => '',
     'category' => '',
-    'url_path' => '',
+    'page_link' => '',
+    'image_path' => '',
     'About' => '',
     'Brand-Concept' => '',
     'LogoDev' => '',
@@ -56,7 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'description' => trim($_POST['description'] ?? ''),
         'date' => trim($_POST['date'] ?? ''),
         'category' => trim($_POST['category'] ?? ''),
-        'url_path' => trim($_POST['url_path'] ?? ''),
+        'page_link' => trim($_POST['page_link'] ?? ''),
+        'image_path' => trim($_POST['image_path'] ?? ''),
         'About' => trim($_POST['About'] ?? ''),
         'BrandConcept' => trim($_POST['BrandConcept'] ?? ''),
         'LogoDev' => trim($_POST['LogoDev'] ?? ''),
@@ -76,7 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                      description = :description,
                      date = :date,
                      category = :category,
-                     url_path = :url_path,
+                     page_link = :page_link,
+                     image_path = :image_path,
                      About = :About,
                      `Brand-Concept` = :BrandConcept,
                      LogoDev = :LogoDev,
@@ -89,10 +92,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $database->query(
                 'INSERT INTO projects
-                 (title, description, date, category, url_path, About,
+                 (title, description, date, category, page_link, image_path, About,
                   `Brand-Concept`, LogoDev, `Brand-Identity`, Packaging, `In-Context`)
                  VALUES
-                 (:title, :description, :date, :category, :url_path, :About,
+                 (:title, :description, :date, :category, :page_link, :image_path, :About,
                   :BrandConcept, :LogoDev, :BrandIdentity, :Packaging, :InContext)',
                 $data
             );
@@ -101,14 +104,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: dashboard.php');
         exit;
     }
-
-    // keep user input if validation fails
+    
     $project['project_id'] = $postedId;
     $project['title'] = $data['title'];
     $project['description'] = $data['description'];
     $project['date'] = $data['date'];
     $project['category'] = $data['category'];
-    $project['url_path'] = $data['url_path'];
+    $project['page_link'] = $data['page_link'];
+    $project['image_path'] = $data['image_path'];
     $project['About'] = $data['About'];
     $project['Brand-Concept'] = $data['BrandConcept'];
     $project['LogoDev'] = $data['LogoDev'];
@@ -131,7 +134,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body class="site">
-
   <main class="site-main">
     <section class="contact-wrapper">
       <div class="grid-con">
@@ -152,8 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h2 class="contact-heading"><?php echo $isEdit ? 'EDIT DETAILS' : 'NEW PROJECT'; ?></h2>
 
                 <div class="contact-actions" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
-                  <button class="contact-submit" type="button"
-                    onclick="window.location.href='dashboard.php'">
+                  <button class="contact-submit" type="button" onclick="window.location.href='dashboard.php'">
                     BACK TO DASHBOARD
                   </button>
                 </div>
@@ -191,8 +192,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   </div>
 
                   <div class="contact-field-group">
-                    <label class="contact-label">URL PATH:</label>
-                    <input class="contact-input" type="text" name="url_path" value="<?php echo htmlspecialchars($project['url_path'] ?? ''); ?>">
+                    <label class="contact-label">PAGE LINK:</label>
+                    <input class="contact-input" type="text" name="page_link" value="<?php echo htmlspecialchars($project['page_link'] ?? ''); ?>" placeholder="seven.php">
+                  </div>
+
+                  <div class="contact-field-group">
+                    <label class="contact-label">IMAGE PATH:</label>
+                    <input class="contact-input" type="text" name="image_path" value="<?php echo htmlspecialchars($project['image_path'] ?? ''); ?>" placeholder="images/Seven_Cover.png">
                   </div>
 
                   <div class="contact-field-group">
@@ -230,8 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   <div class="contact-actions" style="display:flex; gap:12px; flex-wrap:wrap;">
                     <button class="contact-submit" type="submit"><?php echo $isEdit ? 'UPDATE' : 'ADD'; ?></button>
 
-                    <button class="contact-submit" type="button"
-                      onclick="window.location.href='dashboard.php'">
+                    <button class="contact-submit" type="button" onclick="window.location.href='dashboard.php'">
                       CANCEL
                     </button>
                   </div>
@@ -245,6 +250,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </section>
   </main>
-
 </body>
 </html>
