@@ -96,7 +96,7 @@ function projectLink($p) {
           <div class="works-row" id="works-row">
 
             <div class="work-column branding">
-              <a href="seven.html" class="work-link">
+              <a href="seven.php" class="work-link">
                 <div class="work-item">
                   <div class="work-photo-box">
                     <div class="work-thumb">
@@ -110,7 +110,7 @@ function projectLink($p) {
             </div>
 
             <div class="work-column branding">
-              <a href="squeezit.html" class="work-link">
+              <a href="squeezit.php" class="work-link">
                 <div class="work-item">
                   <div class="work-photo-box">
                     <div class="work-thumb">
