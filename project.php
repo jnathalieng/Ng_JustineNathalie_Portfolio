@@ -72,7 +72,7 @@ function projectLink($p) {
           <ul class="menu-list">
             <li><a href="index.html">HOME</a></li>
             <li><a href="about.html">ABOUT ME</a></li>
-            <li><a href="project.php">WORKS</a></li>
+            <li><a href="project.html">WORKS</a></li>
             <li><a href="docs/Ng_JustineNathalie_Resume.pdf" target="_blank">RESUME</a></li>
             <li><a href="contact.php">CONTACT</a></li>
           </ul>
@@ -87,7 +87,7 @@ function projectLink($p) {
         <div class="col-span-full m-col-start-2 m-col-end-12 l-col-start-2 l-col-end-12 works-inner" id="works-inner">
 
           <header class="works-header" id="works-header">
-            <h2 class="works-heading" id="works-heading">Featurd Work</h2>
+            <h2 class="works-heading" id="works-heading">Featured Work</h2>
             <p class="works-intro" id="works-intro">
               A peek into my world of design, storytelling, and digital play.
             </p>
@@ -96,7 +96,7 @@ function projectLink($p) {
           <div class="works-row" id="works-row">
 
             <div class="work-column branding">
-              <a href="seven.php" class="work-link">
+              <a href="seven.html" class="work-link">
                 <div class="work-item">
                   <div class="work-photo-box">
                     <div class="work-thumb">
@@ -110,7 +110,7 @@ function projectLink($p) {
             </div>
 
             <div class="work-column branding">
-              <a href="squeezit.php" class="work-link">
+              <a href="squeezit.html" class="work-link">
                 <div class="work-item">
                   <div class="work-photo-box">
                     <div class="work-thumb">
@@ -122,49 +122,6 @@ function projectLink($p) {
                 </div>
               </a>
             </div>
-
-            <div class="work-column web">
-              <a href="#" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/JN_Cover.png" alt="Industry Night Site preview" class="work-img comingsoon-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">Industry Night Site</h3>
-                  <p class="work-text">Coming soon. Not available.</p>
-                </div>
-              </a>
-            </div>
-
-            <div class="work-column web">
-              <a href="#" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/JN_Cover.png" alt="Portfolio Website preview" class="work-img comingsoon-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">Portfolio Website</h3>
-                  <p class="work-text">Coming soon. Not available.</p>
-                </div>
-              </a>
-            </div>
-
-            <div class="work-column motion">
-              <a href="#" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/JN_Cover.png" alt="Kids Bumper Channel preview" class="work-img comingsoon-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">Kids Bumper Channel</h3>
-                  <p class="work-text">Coming soon. Not available.</p>
-                </div>
-              </a>
-            </div>
-
           </div>
 
         </div>
