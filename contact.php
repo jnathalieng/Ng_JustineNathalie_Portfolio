@@ -1,4 +1,8 @@
-<?php ?>
+<?php
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +10,10 @@
   <meta name="viewport" content="initial-scale=1.0, width=device-width">
   <title>JN Designs Portfolio</title>
   <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
-<link rel="shortcut icon" href="jn_favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
-<link rel="manifest" href="jn_favicon/site.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/grid.css" rel="stylesheet">
@@ -22,7 +26,6 @@
 
   <div id="sticky-nav-con">
     <header class="head" id="site-header">
-
       <div class="logo">
         <a href="index.php">
           <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
@@ -44,7 +47,6 @@
           </ul>
         </div>
       </nav>
-
     </header>
   </div>
 
@@ -62,7 +64,7 @@
                 <h2 class="contact-heading">CONTACT ME</h2>
 
                 <p class="contact-copy">
-                  If you’d like to make an enquiry, please feel free to get in touch,
+                  If you'd like to make an enquiry, please feel free to get in touch,
                   and I will respond as soon as possible.
                 </p>
 
@@ -76,9 +78,9 @@
 
               <div class="col-span-full m-col-span-6 l-col-span-6 contact-right">
 
-                <form method="post" action="CMS/adduser.php" class="contact-form">
+                <section id="feedback"></section>
 
-                  <section id="feedback"></section>
+                <form id="contactForm" method="post" action="admin/adduser.php" class="contact-form">
 
                   <div class="contact-field-group">
                     <label class="contact-label" for="name">NAME:<span>*</span></label>
@@ -95,7 +97,6 @@
                       <label class="contact-label" for="message">MESSAGE:<span>*</span></label>
                       <span class="contact-char-note">(1000 Characters)</span>
                     </div>
-
                     <textarea class="contact-textarea" id="message" name="message" placeholder="Your Message" required></textarea>
                   </div>
 
