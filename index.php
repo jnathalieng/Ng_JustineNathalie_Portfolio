@@ -2,43 +2,40 @@
 require_once __DIR__ . '/includes/database.php';
 
 $database = new \Portfolio\Database();
-$connection = $database->connect();
 
-$stmt = $connection->prepare(
-  'SELECT project_id, title, description
-   FROM projects
-   ORDER BY project_id DESC
-   LIMIT 3'
+$results = $database->query(
+    'SELECT project_id, title, description
+     FROM projects
+     ORDER BY project_id DESC
+     LIMIT 2'
 );
-$stmt->execute();
-$featured = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$featured = $results ?? [];
 
 function getPosterByIndex($i) {
-  $posters = [
-    'images/Squeezit_Poster.png',
-    'images/Lumibuds-Poster.png',
-    'images/Seven_Poster.png'
-  ];
-  return $posters[$i] ?? 'images/JN_Cover.png';
+    $posters = [
+        'images/Squeezit_Cover.png',
+        'images/sevencover.png'
+    ];
+    return $posters[$i] ?? 'images/JN_Cover.png';
 }
 
-$connectSlideNum = 3 + (is_array($featured) ? count($featured) : 0);
-if ($connectSlideNum < 6) {
-  $connectSlideNum = 6;
+$connectSlideNum = 3 + count($featured);
+if ($connectSlideNum < 5) {
+    $connectSlideNum = 5;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0, width=device-width">
   <title>JN Designs Portfolio</title>
   <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
-<link rel="shortcut icon" href="jn_favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
-<link rel="manifest" href="jn_favicon/site.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/grid.css" rel="stylesheet">
@@ -64,7 +61,7 @@ if ($connectSlideNum < 6) {
             <li><a href="index.php">HOME</a></li>
             <li><a href="about.html">ABOUT ME</a></li>
             <li><a href="project.php">WORKS</a></li>
-            <li><a href="docs/Resume-JustineNg.pdf" target="_blank">RESUME</a></li>
+            <li><a href="docs/Ng_JustineNathalie_Resume.pdf" target="_blank">RESUME</a></li>
             <li><a href="contact.php">CONTACT</a></li>
           </ul>
         </div>
@@ -86,7 +83,7 @@ if ($connectSlideNum < 6) {
         </div>
 
         <div class="hero-bottom">
-          <h2 class="name-line">I’M <span>JUSTINE NATHALIE</span></h2>
+          <h2 class="name-line">I'M <span>JUSTINE NATHALIE</span></h2>
           <p class="subtitle">I create websites and digital products with a splash of design, a sprinkle of code, and a whole lot of creativity.</p>
 
           <div class="section-btn-inner">
@@ -121,20 +118,22 @@ if ($connectSlideNum < 6) {
       <?php foreach ($featured as $i => $p) : ?>
         <section class="slide slider-section fw-section" id="slide<?php echo 3 + $i; ?>">
           <div class="fw-title-img-wrap">
-            <img src="<?php echo htmlspecialchars(getPosterByIndex($i)); ?>" alt="<?php echo htmlspecialchars($p['title']); ?> project poster" class="fw-title-img">
+            <img src="<?php echo htmlspecialchars(getPosterByIndex($i)); ?>"
+                 alt="<?php echo htmlspecialchars($p['title']); ?> project poster"
+                 class="fw-title-img">
           </div>
           <h3 class="fw-title"><?php echo htmlspecialchars($p['title']); ?></h3>
           <p class="fw-subtitle"><?php echo htmlspecialchars($p['description'] ?? ''); ?></p>
           <div class="section-btn-inner">
-            <a href="single_project.php?id=<?php echo (int)$p['project_id']; ?>" class="section-learn-btn">VIEW PROJECT</a>
+            <a href="project.php" class="section-learn-btn">VIEW PROJECT</a>
           </div>
         </section>
       <?php endforeach; ?>
     <?php endif; ?>
 
     <section class="slide slider-section connect-section" id="slide<?php echo $connectSlideNum; ?>">
-      <h3 class="fw-title">LET’S CONNECT</h3>
-      <p class="fw-subtitle">I’d love to collaborate on playful web, motion, and 3D projects.</p>
+      <h3 class="fw-title">LET'S CONNECT</h3>
+      <p class="fw-subtitle">I'd love to collaborate on playful web, motion, and 3D projects.</p>
       <div class="section-btn-inner">
         <a href="contact.php" class="section-learn-btn">Contact Me</a>
       </div>
@@ -146,7 +145,6 @@ if ($connectSlideNum < 6) {
       <button id="bear3" class="bear"><img src="images/PuBearHead.png" alt="Purple bear icon – slide 3"></button>
       <button id="bear4" class="bear"><img src="images/PBearHead.png" alt="Pink bear icon – slide 4"></button>
       <button id="bear5" class="bear"><img src="images/BBearHead.png" alt="Blue bear icon – slide 5"></button>
-      <button id="bear6" class="bear"><img src="images/PuBearHead.png" alt="Purple bear icon – slide 6"></button>
     </div>
 
   </main>
@@ -165,6 +163,7 @@ if ($connectSlideNum < 6) {
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
