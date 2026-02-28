@@ -21,8 +21,8 @@ spl_autoload_register(function ($class) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/grid.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="../css/grid.css">
+  <link rel="stylesheet" href="../css/main.css">
   <title>JN Designs Portfolio</title>
 </head>
 
@@ -32,7 +32,9 @@ spl_autoload_register(function ($class) {
   <div id="sticky-nav-con">
     <header class="head">
       <div class="logo">
-        <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        <a href="index.html">
+          <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
+        </a>
       </div>
 
       <nav id="main-nav">
