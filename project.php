@@ -1,14 +1,38 @@
 <?php
-require_once __DIR__ . '/includes/Database.php';
+require_once __DIR__ . '/includes/database.php';
 
 $database = new \Portfolio\Database();
+$connection = $database->connect();
 
-$projects = $database->query(
-  'SELECT project_id, title, description, category, date, page_link, image_path
+$stmt = $connection->prepare(
+  'SELECT project_id, title, description, category, image_path, page_link
    FROM projects
    ORDER BY date DESC'
 );
+$stmt->execute();
+$projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+function categoryClass($category) {
+  $c = strtolower(trim($category ?? ''));
+  $c = preg_replace('/[^a-z0-9]+/', '-', $c);
+  return trim($c, '-');
+}
+
+function projectLink($p) {
+  $base = '/Ng_JustineNathalie_Portfolio/';
+
+  $path = trim($p['page_link'] ?? '');
+  if ($path !== '') {
+    if (preg_match('#^(https?://|/)#', $path)) {
+      return $path;
+    }
+    return $base . ltrim($path, '/');
+  }
+
+  return '#';
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +40,10 @@ $projects = $database->query(
   <meta name="viewport" content="initial-scale=1.0, width=device-width">
   <title>JN Designs Portfolio</title>
   <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
-<link rel="shortcut icon" href="jn_favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
-<link rel="manifest" href="jn_favicon/site.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/grid.css" rel="stylesheet">
@@ -67,45 +91,24 @@ $projects = $database->query(
 
           <div class="works-row" id="works-row">
 
-            <?php if (empty($projects)) : ?>
-              <p class="work-text">No projects found.</p>
-            <?php else : ?>
-
-              <?php foreach ($projects as $p) : ?>
-                <?php
-                  $link = trim($p['page_link'] ?? '');
-                  if ($link === '') { $link = '#'; }
-
-                  $img = trim($p['image_path'] ?? '');
-                  if ($img === '') { $img = 'images/JN_Cover.png'; }
-
-                  $title = $p['title'] ?? '';
-                  $desc = $p['description'] ?? '';
-                ?>
-
-                <div class="work-column branding">
-                  <a href="<?php echo htmlspecialchars($link); ?>" class="work-link">
-                    <div class="work-item">
-                      <div class="work-photo-box">
-                        <div class="work-thumb">
-                          <img
-                            src="<?php echo htmlspecialchars($img); ?>"
-                            alt="<?php echo htmlspecialchars($title); ?> preview"
-                            class="work-img"
-                          >
-                        </div>
+            <?php foreach ($projects as $project): ?>
+              <div class="works-column <?php echo htmlspecialchars(categoryClass($project['category'])); ?>">
+                <a href="<?php echo htmlspecialchars(projectLink($project)); ?>" class="works-link">
+                  <div class="works-item">
+                    <div class="works-photo-box">
+                      <div class="works-thumb">
+                        <img
+                          src="images/<?php echo htmlspecialchars($project['image_path']); ?>"
+                          alt="<?php echo htmlspecialchars($project['title']); ?> preview"
+                          class="works-img">
                       </div>
-
-                      <h3 class="work-title"><?php echo htmlspecialchars($title); ?></h3>
-                      <p class="work-text"><?php echo htmlspecialchars($desc); ?></p>
-
                     </div>
-                  </a>
-                </div>
-
-              <?php endforeach; ?>
-
-            <?php endif; ?>
+                    <h3 class="works-title"><?php echo htmlspecialchars($project['title']); ?></h3>
+                    <p class="works-text"><?php echo htmlspecialchars($project['description']); ?></p>
+                  </div>
+                </a>
+              </div>
+            <?php endforeach; ?>
 
           </div>
 
@@ -119,17 +122,11 @@ $projects = $database->query(
       <p>Created by J. Nathalie ©2024</p>
 
       <div class="footer-icons">
-        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank" rel="noopener">
-          <img src="images/Linkedin.png" alt="LinkedIn icon">
-        </a>
+        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
         <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
-        <a href="https://www.instagram.com/jnathalieng" target="_blank" rel="noopener">
-          <img src="images/Instagram.png" alt="Instagram icon">
-        </a>
+        <a href="https://www.instagram.com/jnathalieng" target="_blank"><img src="images/Instagram.png" alt="Instagram icon"></a>
         <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
-        <a href="mailto:ngjnathalie.ca@gmail.com">
-          <img src="images/Email.png" alt="Email icon">
-        </a>
+        <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
       </div>
     </div>
   </footer>
