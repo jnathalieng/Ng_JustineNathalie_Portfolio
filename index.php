@@ -16,7 +16,6 @@ $featured = $stmt->fetchAll(PDO::FETCH_ASSOC);
 function getPosterByIndex($i) {
   $posters = [
     'images/Squeezit_Poster.png',
-    'images/Lumibuds-Poster.png',
     'images/Seven_Poster.png'
   ];
   return $posters[$i] ?? 'images/JN_Cover.png';
