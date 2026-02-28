@@ -6,7 +6,7 @@ if (!isset($_SESSION['logged_in_user'])) {
     exit;
 }
 
-require_once __DIR__ . '/../includes/Database.php';
+require_once __DIR__ . '/../includes/database.php';
 
 $database = new \Portfolio\Database();
 
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: dashboard.php');
         exit;
     }
-    
+
     $project['project_id'] = $postedId;
     $project['title'] = $data['title'];
     $project['description'] = $data['description'];
@@ -129,10 +129,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="initial-scale=1.0, width=device-width">
   <title>JN Designs Portfolio</title>
   <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
-<link rel="shortcut icon" href="jn_favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
-<link rel="manifest" href="jn_favicon/site.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/grid.css" rel="stylesheet">
