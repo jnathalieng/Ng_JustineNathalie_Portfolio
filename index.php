@@ -14,8 +14,8 @@ $featured = $results ?? [];
 
 function getPosterByIndex($i) {
     $posters = [
-        'images/Squeezit_Poster.png',
-        'images/Seven_Poster.png'
+        'images/Seven_Poster.png',
+        'images/Squeezit_Poster.png'
     ];
     return $posters[$i] ?? 'images/JN_Cover.png';
 }
@@ -126,7 +126,7 @@ if ($connectSlideNum < 5) {
           <p class="fw-subtitle"><?php echo htmlspecialchars($p['description'] ?? ''); ?></p>
           <div class="section-btn-inner">
             <?php
-              $links = ['squeezit.php', 'seven.php'];
+              $links = ['seven.php', 'squeezit.php'];
             ?>
             <a href="<?php echo $links[$i] ?? 'project.php'; ?>" class="section-learn-btn">VIEW PROJECT</a>
           </div>
