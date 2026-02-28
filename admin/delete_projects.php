@@ -9,18 +9,20 @@ if (!isset($_SESSION['logged_in_user'])) {
 require_once __DIR__ . '/../includes/database.php';
 
 $database = new \Portfolio\Database();
-$connection = $database->connect();
 
 $id = (int)($_GET['id'] ?? 0);
 
 if ($id <= 0) {
-    header('Location: projects.php');
+    header('Location: dashboard.php');
     exit;
 }
 
-$stmt = $connection->prepare('SELECT project_id, title FROM projects WHERE project_id = :id');
-$stmt->execute(['id' => $id]);
-$project = $stmt->fetch(PDO::FETCH_ASSOC);
+$results = $database->query(
+    'SELECT project_id, title FROM projects WHERE project_id = :id',
+    ['id' => $id]
+);
+
+$project = $results[0] ?? null;
 
 if (!$project) {
     header('Location: dashboard.php');
@@ -28,8 +30,10 @@ if (!$project) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $delete = $connection->prepare('DELETE FROM projects WHERE project_id = :id');
-    $delete->execute(['id' => $id]);
+    $database->query(
+        'DELETE FROM projects WHERE project_id = :id',
+        ['id' => $id]
+    );
 
     header('Location: dashboard.php');
     exit;
@@ -42,10 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="initial-scale=1.0, width=device-width">
   <title>JN Designs Portfolio</title>
   <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
-<link rel="shortcut icon" href="jn_favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
-<link rel="manifest" href="jn_favicon/site.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/grid.css" rel="stylesheet">
@@ -84,14 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="contact-actions" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
                   <button class="contact-submit" type="button"
-                    onclick="window.location.href='projects.php'"
-                    style="text-decoration:none; display:inline-block; text-align:center;">
-                    BACK TO PROJECTS
-                  </button>
-
-                  <button class="contact-submit" type="button"
-                    onclick="window.location.href='dashboard.php'"
-                    style="text-decoration:none; display:inline-block; text-align:center;">
+                    onclick="window.location.href='dashboard.php'">
                     DASHBOARD
                   </button>
                 </div>
@@ -106,8 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button class="contact-submit" type="submit">YES, DELETE</button>
 
                     <button class="contact-submit" type="button"
-                      onclick="window.location.href='projects.php'"
-                      style="text-decoration:none; display:inline-block; text-align:center;">
+                      onclick="window.location.href='dashboard.php'">
                       CANCEL
                     </button>
                   </div>
