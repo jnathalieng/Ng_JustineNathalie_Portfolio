@@ -107,7 +107,7 @@ if (!$project) {
           <?php endif; ?>
 
           <div class="section-btn-inner">
-            <a href="project.php" class="section-learn-btn">Back to Work Page</a>
+            <a href="project.html" class="section-learn-btn">Back to Work Page</a>
           </div>
 
         </div>
