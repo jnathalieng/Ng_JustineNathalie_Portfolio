@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../includes/Database.php';
+require_once __DIR__ . '/../includes/database.php';
 
 $database = new \Portfolio\Database();
 
@@ -32,17 +32,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>JN Designs Portfolio</title>
+  <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/grid.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <title>JN Designs Portfolio - CMS Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/grid.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 </head>
 
 <body class="site">
   <h1 class="hidden">JN Designs Portfolio Website</h1>
 
-  <!-- LOGO ONLY (No Nav) -->
   <div style="text-align:center; padding:40px 0 10px 0;">
     <img src="../images/FinalLogo_JN.png" alt="JN Designs Logo" style="max-width:140px;">
   </div>
