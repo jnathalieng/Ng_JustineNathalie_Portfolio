@@ -23,7 +23,7 @@ $stmt->execute(['id' => $id]);
 $project = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$project) {
-    header('Location: projects.php');
+    header('Location: dashboard.php');
     exit;
 }
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $delete = $connection->prepare('DELETE FROM projects WHERE project_id = :id');
     $delete->execute(['id' => $id]);
 
-    header('Location: projects.php');
+    header('Location: dashboard.php');
     exit;
 }
 ?>

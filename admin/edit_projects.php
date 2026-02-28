@@ -6,10 +6,9 @@ if (!isset($_SESSION['logged_in_user'])) {
     exit;
 }
 
-require_once __DIR__ . '/../includes/database.php';
+require_once __DIR__ . '/../includes/Database.php';
 
 $database = new \Portfolio\Database();
-$connection = $database->connect();
 
 $error = '';
 $isEdit = false;
@@ -32,12 +31,15 @@ $project = [
 ];
 
 if ($id > 0) {
-    $stmt = $connection->prepare('SELECT * FROM projects WHERE project_id = :id');
-    $stmt->execute(['id' => $id]);
-    $found = $stmt->fetch(PDO::FETCH_ASSOC);
+    $results = $database->query(
+        'SELECT * FROM projects WHERE project_id = :id',
+        ['id' => $id]
+    );
+
+    $found = $results[0] ?? null;
 
     if (!$found) {
-        header('Location: projects.php');
+        header('Location: dashboard.php');
         exit;
     }
 
@@ -68,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
 
         if ($postedId > 0) {
-            $stmt = $connection->prepare(
+            $database->query(
                 'UPDATE projects
                  SET title = :title,
                      description = :description,
@@ -81,27 +83,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                      `Brand-Identity` = :BrandIdentity,
                      Packaging = :Packaging,
                      `In-Context` = :InContext
-                 WHERE project_id = :id'
+                 WHERE project_id = :id',
+                $data + ['id' => $postedId]
             );
-
-            $stmt->execute($data + ['id' => $postedId]);
         } else {
-            $stmt = $connection->prepare(
+            $database->query(
                 'INSERT INTO projects
                  (title, description, date, category, url_path, About,
                   `Brand-Concept`, LogoDev, `Brand-Identity`, Packaging, `In-Context`)
                  VALUES
                  (:title, :description, :date, :category, :url_path, :About,
-                  :BrandConcept, :LogoDev, :BrandIdentity, :Packaging, :InContext)'
+                  :BrandConcept, :LogoDev, :BrandIdentity, :Packaging, :InContext)',
+                $data
             );
-
-            $stmt->execute($data);
         }
 
-        header('Location: projects.php');
+        header('Location: dashboard.php');
         exit;
     }
 
+    // keep user input if validation fails
     $project['project_id'] = $postedId;
     $project['title'] = $data['title'];
     $project['description'] = $data['description'];
@@ -126,15 +127,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/grid.css">
   <link rel="stylesheet" href="../css/main.css">
-  <title>JN Designs Portfolio - CMS <?php echo $isEdit ? 'Edit Project' : 'Add Project'; ?></title>
+  <title><?php echo $isEdit ? 'Edit Project' : 'Add Project'; ?></title>
 </head>
 
 <body class="site">
-  <h1 class="hidden">JN Designs Portfolio Website</h1>
-
-  <div style="text-align:center; padding:40px 0 10px 0;">
-    <img src="../images/FinalLogo_JN.png" alt="JN Designs Logo" style="max-width:140px;">
-  </div>
 
   <main class="site-main">
     <section class="contact-wrapper">
@@ -155,21 +151,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <div class="col-span-full m-col-span-5 l-col-span-5 contact-left">
                 <h2 class="contact-heading"><?php echo $isEdit ? 'EDIT DETAILS' : 'NEW PROJECT'; ?></h2>
 
-                <p class="contact-copy">
-                  <?php echo $isEdit ? 'Update the fields and click Update.' : 'Fill out the fields and click Add.'; ?>
-                </p>
-
                 <div class="contact-actions" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
                   <button class="contact-submit" type="button"
-                    onclick="window.location.href='projects.php'"
-                    style="text-decoration:none; display:inline-block; text-align:center;">
-                    BACK TO PROJECTS
-                  </button>
-
-                  <button class="contact-submit" type="button"
-                    onclick="window.location.href='dashboard.php'"
-                    style="text-decoration:none; display:inline-block; text-align:center;">
-                    DASHBOARD
+                    onclick="window.location.href='dashboard.php'">
+                    BACK TO DASHBOARD
                   </button>
                 </div>
               </div>
@@ -246,8 +231,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button class="contact-submit" type="submit"><?php echo $isEdit ? 'UPDATE' : 'ADD'; ?></button>
 
                     <button class="contact-submit" type="button"
-                      onclick="window.location.href='projects.php'"
-                      style="text-decoration:none; display:inline-block; text-align:center;">
+                      onclick="window.location.href='dashboard.php'">
                       CANCEL
                     </button>
                   </div>
