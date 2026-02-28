@@ -5,7 +5,7 @@ $database = new \Portfolio\Database();
 $connection = $database->connect();
 
 $stmt = $connection->prepare(
-  'SELECT project_id, title, description, category, date, url_path
+  'SELECT project_id, title, description, category, image_path, page_link
    FROM projects
    ORDER BY date DESC'
 );
@@ -20,17 +20,8 @@ function categoryClass($category) {
 
 function projectLink($p) {
   $base = '/Ng_JustineNathalie_Portfolio/';
-  $id = (int)($p['project_id'] ?? 0);
 
-  if ($id === 1) {
-    return $base . 'squeezit.php';
-  }
-
-  if ($id === 2) {
-    return $base . 'seven.php';
-  }
-
-  $path = trim($p['url_path'] ?? '');
+  $path = trim($p['page_link'] ?? '');
   if ($path !== '') {
     if (preg_match('#^(https?://|/)#', $path)) {
       return $path;
@@ -38,7 +29,7 @@ function projectLink($p) {
     return $base . ltrim($path, '/');
   }
 
-  return $base . 'single_project.php?id=' . $id;
+  return '#';
 }
 ?>
 
@@ -46,12 +37,17 @@ function projectLink($p) {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>JN Designs Portfolio</title>
+  <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/grid.css">
-  <link rel="stylesheet" href="css/main.css">
-  <title>JN Designs Portfolio – Project Page</title>
+  <link href="css/grid.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 </head>
 
 <body data-page="project" class="site">
@@ -95,33 +91,27 @@ function projectLink($p) {
 
           <div class="works-row" id="works-row">
 
-            <div class="work-column branding">
-              <a href="seven.php" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/Seven_Cover.png" alt="SEVEN Pet Care branding preview" class="work-img">
+            <?php foreach ($projects as $project): ?>
+              <div class="works-column <?php echo htmlspecialchars(categoryClass($project['category'])); ?>">
+                <a href="<?php echo htmlspecialchars(projectLink($project)); ?>" class="works-link">
+                  <div class="works-item">
+                    <div class="works-photo-box">
+                      <div class="works-thumb">
+                        <img
+                          src="images/<?php echo htmlspecialchars($project['image_path']); ?>"
+                          alt="<?php echo htmlspecialchars($project['title']); ?> preview"
+                          class="works-img">
+                      </div>
                     </div>
+                    <h3 class="works-title"><?php echo htmlspecialchars($project['title']); ?></h3>
+                    <p class="works-text"><?php echo htmlspecialchars($project['description']); ?></p>
                   </div>
-                  <h3 class="work-title">SEVEN Pet Care</h3>
-                  <p class="work-text">SEVEN is a gentle, nature-inspired pet-care brand built around the idea of “seven days of pet love.”</p>
-                </div>
-              </a>
-            </div>
+                </a>
+              </div>
+            <?php endforeach; ?>
 
-            <div class="work-column branding">
-              <a href="squeezit.php" class="work-link">
-                <div class="work-item">
-                  <div class="work-photo-box">
-                    <div class="work-thumb">
-                      <img src="images/Squeezit_Cover.png" alt="Squeez It branding preview" class="work-img">
-                    </div>
-                  </div>
-                  <h3 class="work-title">Squeez It!</h3>
-                  <p class="work-text">Squeezit is a character-driven rebrand of a fruit-flavoured juice drink, created to feel like a tiny playground in a bottle.</p>
-                </div>
-              </a>
-            </div>
+          </div>
+
         </div>
       </div>
     </section>
