@@ -14,38 +14,52 @@ if (!$project) {
     echo "Project not found.";
     exit;
 }
+
+$images = $database->query(
+    'SELECT * FROM project_images WHERE project_id = :id',
+    ['id' => 1]
+);
+
+$img = [];
+foreach ($images as $image) {
+    $img[$image['image_id']] = $image;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title><?php echo htmlspecialchars($project['title']); ?> – JN Designs</title>
+  <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/grid.css">
-  <link rel="stylesheet" href="css/main.css">
-  <title><?php echo htmlspecialchars($project['title']); ?> – JN Designs</title>
+  <link href="css/grid.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 </head>
 
-<body class="site">
-  <h1 class="hidden">JN Designs Portfolio Project Page</h1>
+<body data-page="project" class="site">
+  <h1 class="hidden">JN Designs Portfolio Website</h1>
 
   <div id="sticky-nav-con">
     <header class="head">
       <div class="logo">
-        <a href="index.php">
+        <a href="index.html">
           <img src="images/FinalLogo_JN.png" alt="JN Designs Logo">
         </a>
       </div>
-
       <nav id="main-nav">
         <button class="burger-btn" id="burger-button"><i class="fa fa-bars"></i></button>
         <div id="burger-con" class="menu-panel">
           <ul class="menu-list">
-            <li><a href="index.php">HOME</a></li>
+            <li><a href="index.html">HOME</a></li>
             <li><a href="about.html">ABOUT ME</a></li>
             <li><a href="project.php">WORKS</a></li>
-            <li><a href="docs/Ng_JustineNathalie_Resume" target="_blank">RESUME</a></li>
+            <li><a href="docs/Ng_JustineNathalie_Resume.pdf" target="_blank">RESUME</a></li>
             <li><a href="contact.php">CONTACT</a></li>
           </ul>
         </div>
@@ -54,56 +68,107 @@ if (!$project) {
   </div>
 
   <main id="content">
-    <section class="project-wrapper">
-      <div class="grid-con">
+    <section class="project-wrapper squeezit-project" id="squeezit-project">
 
+      <div class="grid-con">
+        <div class="col-span-full m-col-start-2 m-col-end-12 l-col-start-3 l-col-end-11 project-hero">
+          <?php if (isset($img[1])) : ?>
+            <img src="<?php echo htmlspecialchars($img[1]['src']); ?>"
+                 alt="<?php echo htmlspecialchars($img[1]['alt_text']); ?>"
+                 class="project-hero-img">
+          <?php endif; ?>
+        </div>
+      </div>
+
+      <div class="grid-con project-body">
         <div class="col-span-full m-col-start-2 m-col-end-12 l-col-start-3 l-col-end-11 project-content">
 
-          <h2 class="project-title">
-            <?php echo htmlspecialchars($project['title']); ?>
-          </h2>
+          <h2 class="project-title"><?php echo htmlspecialchars($project['title']); ?></h2>
+
+          <?php if (!empty($project['Brand-Concept'])) : ?>
+            <h3 class="project-heading">Project</h3>
+            <p class="project-text">
+              <?php echo htmlspecialchars($project['Brand-Concept']); ?>
+            </p>
+          <?php endif; ?>
 
           <?php if (!empty($project['About'])) : ?>
             <h3 class="project-heading">About</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['About'])); ?>
+              <?php echo htmlspecialchars($project['About']); ?>
             </p>
           <?php endif; ?>
 
-          <?php if (!empty($project['Brand-Concept'])) : ?>
-            <h3 class="project-heading">Brand Concept</h3>
-            <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['Brand-Concept'])); ?>
-            </p>
-          <?php endif; ?>
+          <h3 class="project-heading">Role</h3>
+          <p class="project-text project-role">
+            Motion Designer · Graphic Designer · Front-End Web Developer
+          </p>
 
           <?php if (!empty($project['LogoDev'])) : ?>
-            <h3 class="project-heading">Logo Development</h3>
+            <h3 class="project-heading">Hero Artwork</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['LogoDev'])); ?>
+              <?php echo htmlspecialchars($project['LogoDev']); ?>
             </p>
+            <?php if (isset($img[3])) : ?>
+              <div class="project-image-box">
+                <img src="<?php echo htmlspecialchars($img[3]['src']); ?>"
+                     alt="<?php echo htmlspecialchars($img[3]['alt_text']); ?>"
+                     class="project-hero-img">
+              </div>
+            <?php endif; ?>
           <?php endif; ?>
 
           <?php if (!empty($project['Brand-Identity'])) : ?>
-            <h3 class="project-heading">Brand Identity</h3>
+            <h3 class="project-heading">Logo Development, Sketches, and Colour Palette</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['Brand-Identity'])); ?>
+              <?php echo htmlspecialchars($project['Brand-Identity']); ?>
             </p>
+            <div class="project-image-box">
+              <?php foreach ([4, 5, 6] as $id) : ?>
+                <?php if (isset($img[$id])) : ?>
+                  <img src="<?php echo htmlspecialchars($img[$id]['src']); ?>"
+                       alt="<?php echo htmlspecialchars($img[$id]['alt_text']); ?>"
+                       class="project-hero-img">
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </div>
           <?php endif; ?>
 
           <?php if (!empty($project['Packaging'])) : ?>
-            <h3 class="project-heading">Packaging</h3>
+            <h3 class="project-heading">Packaging and Label Design</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['Packaging'])); ?>
+              <?php echo htmlspecialchars($project['Packaging']); ?>
             </p>
+            <?php foreach ([7, 8] as $id) : ?>
+              <?php if (isset($img[$id])) : ?>
+                <div class="project-image-box">
+                  <img src="<?php echo htmlspecialchars($img[$id]['src']); ?>"
+                       alt="<?php echo htmlspecialchars($img[$id]['alt_text']); ?>"
+                       class="project-hero-img">
+                </div>
+              <?php endif; ?>
+            <?php endforeach; ?>
           <?php endif; ?>
 
           <?php if (!empty($project['In-Context'])) : ?>
-            <h3 class="project-heading">In Context</h3>
+            <h3 class="project-heading">Digital Layouts</h3>
             <p class="project-text">
-              <?php echo nl2br(htmlspecialchars($project['In-Context'])); ?>
+              <?php echo htmlspecialchars($project['In-Context']); ?>
             </p>
+            <div class="project-image-box">
+              <?php foreach ([9, 10] as $id) : ?>
+                <?php if (isset($img[$id])) : ?>
+                  <img src="<?php echo htmlspecialchars($img[$id]['src']); ?>"
+                       alt="<?php echo htmlspecialchars($img[$id]['alt_text']); ?>"
+                       class="project-hero-img">
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </div>
           <?php endif; ?>
+
+          <p class="project-tagline">
+            A playful splash of flavour, colour, and character in every sip.
+          </p>
 
           <div class="section-btn-inner">
             <a href="project.php" class="section-learn-btn">Back to Work Page</a>
@@ -111,6 +176,7 @@ if (!$project) {
 
         </div>
       </div>
+
     </section>
   </main>
 
@@ -118,9 +184,9 @@ if (!$project) {
     <div class="footer-inner">
       <p>Created by J. Nathalie ©2024</p>
       <div class="footer-icons">
-        <a href="www.linkedin.com/in/jnathalieng"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
+        <a href="https://www.linkedin.com/in/jnathalieng" target="_blank"><img src="images/Linkedin.png" alt="LinkedIn icon"></a>
         <a href="#"><img src="images/Facebook.png" alt="Facebook icon"></a>
-        <a href="www.instagram.com/jnathalieng"><img src="images/Instagram.png" alt="Instagram icon"></a>
+        <a href="https://www.instagram.com/jnathalieng" target="_blank"><img src="images/Instagram.png" alt="Instagram icon"></a>
         <a href="#"><img src="images/Youtube.png" alt="YouTube icon"></a>
         <a href="mailto:ngjnathalie.ca@gmail.com"><img src="images/Email.png" alt="Email icon"></a>
       </div>

@@ -1,59 +1,58 @@
 export function contact() {
 
-  // I’m selecting the form and feedback section
-  const form = document.querySelector(".contact-form");
-  const feedback = document.querySelector("#feedback");
+    const form = document.querySelector("#contactForm");
+    const feedBack = document.querySelector("#feedback");
 
-  function submitForm(event) {
-    event.preventDefault(); // I stop the page from reloading
+    function submitForm(event) {
+        event.preventDefault();
+        // console.log("form has been called");
 
-    feedback.innerHTML = "";
+        const thisform = event.currentTarget;
+        const url = "admin/adduser.php";
 
-    const formData = new URLSearchParams({
-      name: form.elements.name.value,
-      email: form.elements.email.value,
-      message: form.elements.message.value
-    });
-
-    fetch("CMS/adduser.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: formData
-    })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-
-      // I check if there are errors
-      if (data.errors) {
-        data.errors.forEach(function(error) {
-          const p = document.createElement("p");
-          p.textContent = error;
-          feedback.appendChild(p);
+        const formData = new URLSearchParams({
+            name: thisform.elements.name.value,
+            email: thisform.elements.email.value,
+            message: thisform.elements.message.value,
         });
-        return;
-      }
 
-      // If no errors, I reset the form and show success
-      form.reset();
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(responseText => {
+            //console.log(responseText);
+            feedBack.innerHTML = "";
 
-      const success = document.createElement("p");
-      success.textContent = data.message;
-      feedback.appendChild(success);
+            if (responseText.errors) {
+                responseText.errors.forEach(error => {
+                    const errorElement = document.createElement("p");
+                        errorElement.textContent = error;
+                        feedBack.appendChild(errorElement);
+                })
+            } else {
+                form.reset();
+                const messageElement = document.createElement("p");
+                messageElement.textContent = responseText.message;
+                feedBack.appendChild(messageElement);
+            }
+        })
+        .catch(error => {
+            console.error("Error during fetch", error);
+            feedBack.innerHTML = "";
+            const errorMessageElement = document.createElement("p");
+            errorMessageElement.textContent = "Sorry, something went wrong. Please try again later.";
+            feedBack.appendChild(errorMessageElement);
+        })
+    }
 
-    })
-    .catch(function() {
-      const p = document.createElement("p");
-      p.textContent = "Something went wrong. Please try again.";
-      feedback.appendChild(p);
-    });
-  }
 
-  if (form) {
-    form.addEventListener("submit", submitForm);
-  }
+    if (form) {
+        form.addEventListener("submit", submitForm);
+    }
 
 }
