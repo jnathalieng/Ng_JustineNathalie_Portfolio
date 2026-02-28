@@ -9,26 +9,24 @@ if (!isset($_SESSION['logged_in_user'])) {
 require_once __DIR__ . '/../includes/database.php';
 
 $database = new \Portfolio\Database();
-$connection = $database->connect();
-$stmt = $connection->prepare(
+
+$projects = $database->query(
     'SELECT
         project_id,
         title,
         description,
         date,
         category,
-        url_path,
+        page_link,
         About,
-        `Brand-Concept` AS BrandConcept,
+        `Brand-Concept`,
         LogoDev,
-        `Brand-Identity` AS BrandIdentity,
+        `Brand-Identity`,
         Packaging,
-        `In-Context` AS InContext
+        `In-Context`
      FROM projects
      ORDER BY project_id DESC'
 );
-$stmt->execute();
-$projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,10 +35,10 @@ $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="initial-scale=1.0, width=device-width">
   <title>JN Designs Portfolio</title>
   <link rel="icon" type="image/png" href="jn_favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
-<link rel="shortcut icon" href="jn_favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
-<link rel="manifest" href="jn_favicon/site.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="jn_favicon/favicon.svg" />
+  <link rel="shortcut icon" href="jn_favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="jn_favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="jn_favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/grid.css" rel="stylesheet">
@@ -95,7 +93,7 @@ $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
               <div class="col-span-full m-col-span-6 l-col-span-6 contact-right">
 
                 <?php if (empty($projects)) : ?>
-                  <p class="contact-required-note">No projects found yet. Click “ADD PROJECT”.</p>
+                  <p class="contact-required-note">No projects found yet. Click "ADD PROJECT".</p>
                 <?php else : ?>
 
                   <div style="overflow-x:auto; width:100%;">
